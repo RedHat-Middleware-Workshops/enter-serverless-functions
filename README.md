@@ -33,7 +33,6 @@ applying codestarts...
 --> /quarkus-world-tour/enter-serverless-function
 -----------
 Navigate into this directory and get started: quarkus dev
-
 ```
 
 ### Test the application locally
@@ -667,3 +666,11 @@ When you go to the pod logs in OpenShift console, you will see the same cloudeve
 ![openshift](./img/openshift-cloudevent-log.png)
 
 ### Congratulations!
+
+## Additional Resources
+
+* [A guide to Java serverless functions](https://opensource.com/downloads/java-serverless-ebook)
+* [Getting Started with Quarkus Serverless Functions](https://dzone.com/refcardz/getting-started-with-quarkus-serverless-functions)
+* [Quarkus Funqy OpenShift Serverless](https://youtu.be/fQFVwoXWRto)
+* [Deploying Quarkus based Amazon Lambdas](https://youtu.be/BOvxdY8cSHw)
+* [Make Quarkus Serverless from Devfiles to OpenShift](https://youtu.be/3LtTQml7Gv8)
