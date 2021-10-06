@@ -667,4 +667,4 @@ When you go to the pod logs in OpenShift console, you will see the same cloudeve
 ![openshift](./img/openshift-cloudevent-log.png)
 
 
-##Congratulations!
+## Congratulations!
