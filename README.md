@@ -2,7 +2,15 @@
 
 This demo showcases how quickly developers can create cloud-native microservice project using Quarkus. Then, the application can be deployed to a function to AWS Lambda and OpenShift Serverless with JVM and Native mode.
 
-## Generate a new Quarkus project
+# Table of Contents
+1. [Generate a new Quarkus project](#GenerateNewQuarkusProject)
+2. [Deploy to AWS Lambda with HTTP API](#DeployAWS)
+3. [Optimize the function and make it portable using Quarkus Funqy](#OptimizeFunction)
+4. [Deploy the function to Red Hat OpenShift Serverless](#DeployFunctiontoOCP)
+5. [Generate a new function project using Kn func CLI](#GenerateNewFuncProject)
+6. [Additional Resources](#AdditionalResources)
+
+## Generate a new Quarkus project <a name="GenerateNewQuarkusProject"></a>
 
 Use [Quarkus CLI](https://quarkus.io/guides/cli-tooling#installing-the-cli) to scaffold a new Quarkus project based on Maven. Run the following command locally in the Terminal:
 
@@ -80,7 +88,7 @@ Content-Type: text/plain;charset=UTF-8
 Hello RESTEasy
 ```
 
-## Deploy to AWS Lambda with HTTP API
+## Deploy to AWS Lambda with HTTP API  <a name="DeployAWS"></a>
 
 To deploy this application to AWS Lambda with HTTP API, add a new Quarkus extension(_quarkus-amazon-lambda-http_) using Quarkus CLI:
 
@@ -442,7 +450,7 @@ You can showcase the performance stats to compare JVM vs. Native function in Clo
 
 ![function](./img/aws-metrics.png)
 
-## Optimize the function and make it portable using Quarkus Funqy
+## Optimize the function and make it portable using Quarkus Funqy  <a name="OptimizeFunction"></a>
 
 Add a Quarkus Funqy extension for Amazon Lambda deployment(_quarkus-funqy-amazon-lambda_) and remove the _quarkus-amazon-lambda-http_ extension:
 
@@ -537,7 +545,7 @@ sam delete --stack-name quarkus-native-function
 
 If you want to deploy the Quarkus Funqy application as a native executables, you need to package a native executable first using `./mvnw clean package -Pnative` then run the wrapper script using `LAMBDA_ROLE_ARN=<YOUR_OWN_ARN> sh target/manage.sh native create`.
 
-## Deploy the function to Red Hat OpenShift Serverless
+## Deploy the function to Red Hat OpenShift Serverless  <a name="DeployFunctiontoOCP"></a>
 
 Add an OpenShift and Knative Funqy extensions then remove an existing AWS extension:
 
@@ -600,7 +608,7 @@ When you got back to the Topology view, you will see the Quarku pod is automatic
 **Note**: When you deploy a native executable, the build will take more than 5 mins to finish. You might also have an out of memory error. To fix it, make sure to set `Dquarkus.native.native-image-xmx=4g`.
 
 
-## Generate a new function project using Kn func CLI
+## Generate a new function project using Kn func CLI  <a name="GenerateNewFuncProject"></a>
 
 **Note**: Red Hat OpenShift Serverless Function is still a Tech Preview feature. If you haven't installed Kn CLI yet, find more information [here](https://docs.openshift.com/container-platform/4.8/serverless/cli_tools/advanced-kn-config.html).
 
@@ -667,7 +675,7 @@ When you go to the pod logs in OpenShift console, you will see the same cloudeve
 
 ### Congratulations!
 
-## Additional Resources
+## Additional Resources  <a name="AdditionalResources"></a>
 
 * [A guide to Java serverless functions](https://opensource.com/downloads/java-serverless-ebook)
 * [Getting Started with Quarkus Serverless Functions](https://dzone.com/refcardz/getting-started-with-quarkus-serverless-functions)
