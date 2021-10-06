@@ -1,0 +1,15 @@
+name: quarkus-func
+namespace: quarkus-serverless
+runtime: quarkus
+image: quay.io/danieloh30/quarkus-func:latest
+imageDigest: sha256:19d7baecbf01a4053ecc5cf88c3986b012440692c04365af8b6192f5ed1e809e
+builder: quay.io/boson/faas-jvm-builder:v0.8.4
+builderMap:
+  default: quay.io/boson/faas-jvm-builder:v0.8.4
+  jvm: quay.io/boson/faas-jvm-builder:v0.8.4
+  native: quay.io/boson/faas-quarkus-native-builder:v0.8.4
+volumes: []
+envs: []
+annotations: {}
+options: {}
+labels: []
