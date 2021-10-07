@@ -243,6 +243,8 @@ Server: Werkzeug/1.0.1 Python/3.8.11
 Enter Serverless Functions with Quarkus, PFG
 ```
 
+**Note**: You can also use the live coding feature for Lambda functions development locally. Find more information [here](https://quarkus.io/guides/amazon-lambda#live-coding-and-unitintegration-testing)
+
 Deploy the function to AWS Lambda using SAM CLI:
 
 ```shell
@@ -339,6 +341,8 @@ Value               https://wcji0ss0ge.execute-api.us-east-1.amazonaws.com/
 
 Successfully created/updated stack - quarkus-function in us-east-1
 ```
+
+**Note**: During the `sam deploy`, CloudFormation template will be created automatically (This is not stored in target directory though). Then you can monitor the function in AWS console.
 
 ### Verify the Function in AWS Console
 
