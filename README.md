@@ -161,7 +161,7 @@ Update `GreetingResource.java` file in _src/main/java/org/acme/_ to inject a CDI
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/greeting/{name}")
-    public String greeting(String name) {
+    public String greeting(@PathParam String name) {
         return greetingService.greeting(name);
     }
 
