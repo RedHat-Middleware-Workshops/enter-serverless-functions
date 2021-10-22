@@ -194,6 +194,33 @@ Content-Type: text/plain;charset=UTF-8
 Enter Serverless Functions with Quarkus, daniel
 ```
 
+To mirror the AWS Lambda environment as closely as possible in a dev environment, the Quarkus Amazon Lambda extension boots up a mock AWS Lambda event server in Quarkus Dev and Test mode. This mock event server simulates a true AWS Lambda environment.
+
+While running in Quarkus Dev Mode, you can feed events to it by doing an HTTP POST to http://localhost:8080. The mock event server will receive the events and your lambda will be invoked. You can perform live coding on your lambda and changes will automatically be recompiled and available the next invocation you make.
+
+Update the test case along with the modified __hello__ function. Open the `GreetingResourceTest.java` file in __src/test/java/org/acme__ directory and replace `testHelloEndpoint()` method with the following code:
+
+```java
+    @Test
+    public void testHelloEndpoint() {
+        given()
+          .when().get("/hello")
+          .then()
+             .statusCode(200)
+             .body(is("Hello Serverless"));
+    }
+```
+
+Save the file then go back to the terminal where Quarkus Dev mode is running. Press `r` in the terminal.
+
+Then, you will see the test case passed as below:
+
+```shell
+--
+All 1 test is passing (0 skipped), 1 test was run in 3541ms. Tests completed at 09:09:41.
+Press [r] to re-run, [o] Toggle test output, [h] for more options>
+```
+
 Stop the Dev Mode! Package the application using the following maven clean install:
 
 ```shell
@@ -208,6 +235,8 @@ Inspect generated files in the _target_ directory:
 * bootstrap-example.sh - example bootstrap script for native deployments
 * sam.jvm.yaml - (optional) for use with sam cli and local testing
 * sam.native.yaml - (optional) for use with sam cli and native local testing
+
+**Note**: If you have already tested the function using live coding with Quarkus Dev mode, you can skip the function simulation locally. Then jump into the deployment step.
 
 To simulate the function locally using [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html):
 
