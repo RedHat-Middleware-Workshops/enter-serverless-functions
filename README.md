@@ -1,6 +1,6 @@
 # Enter Serverless Functions with Quarkus
 
-This demo showcases how quickly developers can create cloud-native microservice project using Quarkus. Then, the application can be deployed to a function to AWS Lambda and OpenShift Serverless with JVM and Native mode.
+This hands-on lab showcases how quickly developers can create cloud-native microservice project using Quarkus. Then, the application can be deployed to a function to AWS Lambda and OpenShift Serverless with JVM and Native mode.
 
 # Table of Contents
 1. [Generate a new Quarkus project](#GenerateNewQuarkusProject)
@@ -580,6 +580,8 @@ If you want to deploy the Quarkus Funqy application as a native executables, you
 
 ## Deploy the function to Red Hat OpenShift Serverless  <a name="DeployFunctiontoOCP"></a>
 
+You'll use the [Developer Sandbox](https://developers.redhat.com/developer-sandbox) to deploy a Quarkus function. The sandbox allows developers to access Red Hat’s products and technologies without setup or configuration, and start developing quicker than ever before with our new sandbox environments for Red Hat OpenShift and CodeReady Workspaces. Try your hand at the technologies with our library of activities as well. You need to sign up the [Red Hat Developer Program](https://developers.redhat.com/developer-sandbox/get-started) first to provision a free sandbox. It will take less than 5 min from sign up to create a new cluster along the way.
+
 Add an OpenShift and Knative Funqy extensions then remove an existing AWS extension:
 
 ```shell
@@ -599,8 +601,7 @@ quarkus.kubernetes.deploy=true
 quarkus.openshift.build-strategy=docker
 ```
 
-**Note**: If you haven't installed _OpenShift Serverless Operator_ and _Knative-Serving_ yet, find more information [here](https://docs.openshift.com/container-platform/4.8/serverless/admin_guide/install-serverless-operator.html).
-build/deploy
+**Note**: If you want to use your own OpenShift cluster, you need to install _OpenShift Serverless Operator_ and _Knative-Serving_. Find more information [here](https://docs.openshift.com/container-platform/4.8/serverless/admin_guide/install-serverless-operator.html).
 
 Run the following Maven command to deploy the function to OpenShift Serverless:
 
