@@ -2,6 +2,18 @@
 
 This hands-on lab showcases how quickly developers can create cloud-native microservice project using Quarkus. Then, the application can be deployed to a function to AWS Lambda and OpenShift Serverless with JVM and Native mode.
 
+# Pre-requisites
+
+Before you get started with the hands-on labs, if you already haven't user accounts in the sandbox and AWS, you might need to sign in two cloud services for function deployments such as OpenShift(Kubernetes) and AWS Lambda as below:
+
+* Sign in the [Developer Sandbox for Red Hat OpenShift](https://developers.redhat.com/developer-sandbox) to deploy Quarkus serverless functions to Kubernetes/OpenShift cluster. Click on `Get Started in the Sandbox`. You will need to create a new user account using your email address then your sandbox will stand up in 5 minutes.
+
+![dev-sandbox](./img/dev-sandbox.png)
+
+* Sing in [Amazon Web Services](https://aws.amazon.com/marketplace/management/signin). You might need to add your personal credit card information which won't charge for the function deployment during the lab. Because the function will be deleted at the end of the workshop.
+
+![aws-signin](./img/aws-signin.png)
+
 # Table of Contents
 1. [Generate a new Quarkus project](#GenerateNewQuarkusProject)
 2. [Deploy to AWS Lambda with HTTP API](#DeployAWS)
@@ -59,9 +71,9 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-2021-10-05 21:21:47,597 INFO  [io.quarkus] (Quarkus Main Thread) enter-serverless-function 1.0.0-SNAPSHOT on JVM (powered by Quarkus 2.2.3.Final) started in 1.746s. Listening on: http://localhost:8080
-2021-10-05 21:21:47,601 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2021-10-05 21:21:47,602 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, resteasy, smallrye-context-propagation]
+INFO  [io.quarkus] (Quarkus Main Thread) enter-serverless-function 1.0.0-SNAPSHOT on JVM (powered by Quarkus xx.xx.xx) started in 1.746s. Listening on: http://localhost:8080
+INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, resteasy, smallrye-context-propagation]
 
 --
 Tests paused
