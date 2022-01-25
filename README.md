@@ -35,7 +35,7 @@ quarkus create enter-serverless-function
 
 The output looks like:
 
-```
+```shell
 Creating an app (default project type, see --help).
 -----------
 
@@ -50,7 +50,7 @@ applying codestarts...
 
 -----------
 [SUCCESS] ✅  quarkus project has been successfully generated in:
---> /quarkus-world-tour/enter-serverless-function
+--> /YOUR_WORKING_DIR/enter-serverless-function
 -----------
 Navigate into this directory and get started: quarkus dev
 ```
@@ -60,12 +60,13 @@ Navigate into this directory and get started: quarkus dev
 First thing first! Run the Quarkus Dev Mode using the following Quarkus CLI:
 
 ```shell
-quarkus dev -f /quarkus-world-tour/enter-serverless-function
+cd enter-serverless-function
+quarkus dev
 ```
 
 The output looks like:
 
-```
+```shell
 Listening for transport dt_socket at address: 5005
 __  ____  __  _____   ___  __ ____  ______ 
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
@@ -84,7 +85,7 @@ Press `r` to start the _continuous testing_ then press `d` to open a _DEV UI_. I
 
 ![devui](./img/devui.png)
 
-Verify the RESTful API if it works well. For example, you can use [HTTPie](https://httpie.io/) to invoke the endpoint:
+Verify the RESTful API if it works well. For example, use [HTTPie](https://httpie.io/) to invoke the endpoint:
 
 ```shell
 http :8080/hello
@@ -92,13 +93,21 @@ http :8080/hello
 
 The output should be:
 
-```
+```shell
 HTTP/1.1 200 OK
 Content-Length: 14
 Content-Type: text/plain;charset=UTF-8
 
 Hello RESTEasy
 ```
+
+You can also use `curl` command to access the endpoint:
+
+```shell
+curl localhost:8080/hello
+```
+
+Keep *running* your Quarkus dev mode!! 
 
 ## Deploy to AWS Lambda with HTTP API  <a name="DeployAWS"></a>
 
@@ -135,8 +144,8 @@ camel-quarkus-aws2-translate
 quarkus-amazon-alexa                              
 ...                         
 quarkus-amazon-lambda                             
-quarkus-amazon-lambda-http                        
-quarkus-amazon-lambda-rest                                               
+quarkus-amazon-lambda-rest    
+quarkus-amazon-lambda-xray                                           
 quarkus-amazon-s3                                 
 ...                     
 quarkus-amazon-ssm                                
@@ -167,6 +176,19 @@ public class GreetingService {
 Update `GreetingResource.java` file in _src/main/java/org/acme/_ to inject a CDI bean as well as modifying the return string in _hello_ method:
 
 ```java
+package org.acme;
+
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
+
+@Path("/hello")
+public class GreetingResource {
+
     @Inject
     GreetingService greetingService;
 
@@ -182,13 +204,18 @@ Update `GreetingResource.java` file in _src/main/java/org/acme/_ to inject a CDI
     public String hello() {
         return "Hello Serverless";
     }
+}
 ```
 
 Verify both a new endpoint(_/hello/greeting/{name}_) and an existing one(_/hello_) using HTTPie:
 
 ```shell
 http :8080/hello
+```
 
+The output looks like:
+
+```shell
 HTTP/1.1 200 OK
 Content-Length: 16
 Content-Type: text/plain;charset=UTF-8
@@ -196,15 +223,23 @@ Content-Type: text/plain;charset=UTF-8
 Hello Serverless
 ```
 
+Access another REST API:
+
 ```shell
 http :8080/hello/greeting/daniel
+```
 
+The output looks like:
+
+```shell
 HTTP/1.1 200 OK
 Content-Length: 47
 Content-Type: text/plain;charset=UTF-8
 
 Enter Serverless Functions with Quarkus, daniel
 ```
+
+**Note**: You don’t need to stop and re-run re-run the serverless application because Quarkus will reload the changes automatically via the Live Coding feature.
 
 To mirror the AWS Lambda environment as closely as possible in a dev environment, the Quarkus Amazon Lambda extension boots up a mock AWS Lambda event server in Quarkus Dev and Test mode. This mock event server simulates a true AWS Lambda environment.
 
@@ -233,7 +268,13 @@ All 1 test is passing (0 skipped), 1 test was run in 3541ms. Tests completed at 
 Press [r] to re-run, [o] Toggle test output, [h] for more options>
 ```
 
-Stop the Dev Mode! Package the application using the following maven clean install:
+Stop the Dev Mode! Package the application using the following Quarkus CLI:
+
+```shell
+quarkus build --no-tests
+```
+
+or Use maven package command as below:
 
 ```shell
 ./mvnw clean package
@@ -243,16 +284,16 @@ The output will end with `BUILD SUCCESS`.
 
 Inspect generated files in the _target_ directory:
 
-* function.zip - lambda deployment file
-* bootstrap-example.sh - example bootstrap script for native deployments
-* sam.jvm.yaml - (optional) for use with sam cli and local testing
-* sam.native.yaml - (optional) for use with sam cli and native local testing
+* **function.zip** - lambda deployment file
+* **bootstrap-example.sh** - example bootstrap script for native deployments
+* **sam.jvm.yaml** - (optional) for use with sam cli and local testing
+* **sam.native.yaml** - (optional) for use with sam cli and native local testing
 
 **Note**: If you have already tested the function using live coding with Quarkus Dev mode, you can skip the function simulation locally. Then jump into the deployment step.
 
 To simulate the function locally using [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html):
 
-**NOTE**: You need to run a container runtime(e.g., Docker) to run the SAM emulator.
+**NOTE**: You need to run a container runtime(e.g. [Docker](https://www.docker.com/products/docker-desktop)) to run the SAM emulator.
 
 ```shell
 sam local start-api -t target/sam.jvm.yaml
@@ -260,29 +301,41 @@ sam local start-api -t target/sam.jvm.yaml
 
 Output should look like:
 
-```
+```shell
 Mounting EnterServerlessFunctions at http://127.0.0.1:3000$default [X-AMAZON-APIGATEWAY-ANY-METHOD]
 You can now browse to the above endpoints to invoke your functions. You do not need to restart/reload SAM CLI while working on your functions, changes will be reflected instantly/automatically. You only need to restart SAM CLI if you update your AWS SAM template
 2021-10-05 22:48:29  * Running on http://127.0.0.1:3000/ (Press CTRL+C to quit)
 ```
 
-Then, invoke the endpoint like:
+Then, invoke the endpoint like in another terminal:
+
+ * HTTPie:
 
 ```shell
-Enter Serverless Functions with Quarkus, PFG
+http http://127.0.0.1:3000/hello/greeting/awslocal
 ```
 
-The output should look like:
+ * Curl:
 
+```shell
+curl http://127.0.0.1:3000/hello
 ```
+
+When you go back to the terminal where the sam local command is running, you will see that the Quarkus application gets started. It takes a few seconds to complete getting ready in Quarkus runtime.
+
+Then, the output should look like:
+
+```shell
 HTTP/1.0 200 OK
 Content-Length: 44
 Content-Type: text/plain;charset=UTF-8
 Date: Wed, 06 Oct 2021 02:49:22 GMT
 Server: Werkzeug/1.0.1 Python/3.8.11
 
-Enter Serverless Functions with Quarkus, PFG
+Enter Serverless Functions with Quarkus, awslocal
 ```
+
+Stop the local testing by _CTRL-C_ or _CMD-C_.
 
 **Note**: You can also use the live coding feature for Lambda functions development locally. Find more information [here](https://quarkus.io/guides/amazon-lambda#live-coding-and-unitintegration-testing)
 
@@ -294,7 +347,7 @@ sam deploy -t target/sam.jvm.yaml -g
 
 Input the configuration for the SAM Deploy with your preferences(e.g., stack name == `quarkus-function`). For example,
 
-```
+```shell
 Configuring SAM deploy
 ======================
 
@@ -308,17 +361,19 @@ Configuring SAM deploy
 	Confirm changes before deploy [y/N]: y
 	#SAM needs permission to be able to create roles to connect to the resources in your template
 	Allow SAM CLI IAM role creation [Y/n]: y
-	EnterServerlessFunctions may not have authorization defined, Is this okay? [y/N]: y
+	#Preserves the state of previously provisioned resources when an operation fails
+	Disable rollback [y/N]: n
+	EnterServerlessFunction may not have authorization defined, Is this okay? [y/N]: y
 	Save arguments to configuration file [Y/n]: y
 	SAM configuration file [samconfig.toml]: 
-	SAM configuration environment [default]: 
+	SAM configuration environment [default]:
 ...
 
 ```
 
 Then, you might need to confirm your configurations as below:
 
-```
+```shell
 CloudFormation stack changeset
 -------------------------------------------------------------------------------------------------------------------------------------
 Operation                         LogicalResourceId                 ResourceType                      Replacement                     
@@ -342,7 +397,7 @@ Deploy this changeset? [y/N]:
 
 Press `y` then you will receive the outputs by CloudFormation in a few minutes. It should look like:
 
-```
+```shell
 CloudFormation events from changeset
 -------------------------------------------------------------------------------------------------------------------------------------
 ResourceStatus                    ResourceType                      LogicalResourceId                 ResourceStatusReason            
@@ -413,13 +468,13 @@ When you click on the function name, you can see the details such as package siz
 
 Access the function via HTTP gateway API URL. For example:
 
-```
-http https://wcji0ss0ge.execute-api.us-east-1.amazonaws.com/hello/greeting/daniel
+```shell
+http https://wcji0ss0ge.execute-api.us-east-1.amazonaws.com/hello/greeting/awsprod
 ```
 
 The output should look like:
 
-```
+```shell
 HTTP/1.1 200 OK
 Apigw-Requestid: GxAl3iaOIAMESWg=
 Connection: keep-alive
@@ -427,16 +482,28 @@ Content-Length: 47
 Content-Type: text/plain;charset=UTF-8
 Date: Wed, 06 Oct 2021 03:14:19 GMT
 
-Enter Serverless Functions with Quarkus, daniel
+Enter Serverless Functions with Quarkus, awsprod
 ```
 
 Deploy a native executable to AWS Lambda. Package the application once again using the following command:
+
+**Note**: When you build a native executable on macOS, you need to add the following configuration in _src/main/resources/application.properties_ for building a Linux format image using Docker runtime:
+
+```yaml
+quarkus.native.container-runtime=docker
+```
+
+```shell
+quarkus build --native --no-tests
+```
+
+Or you can run the following maven command:
 
  ```shell
  ./mvnw clean package -DskipTests -Pnative
  ```
 
-Once the build is _complete_, run the SAM CLI to deploy it using the following command:
+Once the build is _complete_, run the SAM CLI to deploy it using the following command. It takes a few minutes to complete the build:
 
 ```shell
 sam deploy -t target/sam.native.yaml -g
@@ -444,7 +511,7 @@ sam deploy -t target/sam.native.yaml -g
 
 Key a different stack name(`quarkus-native-function`) in the prompt:
 
-```
+```shell
 Configuring SAM deploy
 ======================
 
@@ -452,16 +519,18 @@ Configuring SAM deploy
 
 	Setting default arguments for 'sam deploy'
 	=========================================
-	Stack Name [sam-app]: quarkus-native-function
+	Stack Name [quarkus-function]: quarkus-native-function
 	AWS Region [us-east-1]: 
 	#Shows you resources changes to be deployed and require a 'Y' to initiate deploy
-	Confirm changes before deploy [y/N]: 
+	Confirm changes before deploy [Y/n]: y
 	#SAM needs permission to be able to create roles to connect to the resources in your template
 	Allow SAM CLI IAM role creation [Y/n]: y
-	EnterServerlessFunctionsNative may not have authorization defined, Is this okay? [y/N]: y
+	#Preserves the state of previously provisioned resources when an operation fails
+	Disable rollback [y/N]: n
+	EnterServerlessFunctionNative may not have authorization defined, Is this okay? [y/N]: y
 	Save arguments to configuration file [Y/n]: y
 	SAM configuration file [samconfig.toml]: 
-	SAM configuration environment [default]: 
+	SAM configuration environment [default]:
 ...
 
 ```
@@ -476,11 +545,15 @@ Once you deploy it successfully, go back to the AWS console. You have new resour
 
 ![function](./img/aws-function2.png)
 
-Great job! You can access the new Quarkus native function via the new HTTP Gateway API. For example,
+**Great job!** You can access the new Quarkus native function via the **new** HTTP Gateway API. For example,
 
+```shell
+http https://whgv0dgboe.execute-api.us-east-1.amazonaws.com/hello/greeting/awsnativeprod
 ```
-http https://whgv0dgboe.execute-api.us-east-1.amazonaws.com/hello/greeting/jeff
 
+The output should look like:
+
+```shell
 HTTP/1.1 200 OK
 Apigw-Requestid: GxCsrjTBoAMESWg=
 Connection: keep-alive
@@ -488,7 +561,7 @@ Content-Length: 45
 Content-Type: text/plain;charset=UTF-8
 Date: Wed, 06 Oct 2021 03:28:43 GMT
 
-Enter Serverless Functions with Quarkus, jeff
+Enter Serverless Functions with Quarkus, awsnativeprod
 ```
 
 You can showcase the performance stats to compare JVM vs. Native function in CloudWatch metrics:
@@ -539,6 +612,12 @@ quarkus.funqy.export=greeting
 Then, package the application once again using the following command:
 
 ```shell
+quarkus build --no-tests
+```
+
+Or run the following maven package command:
+
+```shell
 ./mvnw clean package -DskipTests
 ```
 
@@ -558,11 +637,13 @@ LAMBDA_ROLE_ARN=<YOUR_OWN_ARN> sh target/manage.sh create
 
 The output should end with:
 
-```
+```shell
     "RevisionId": "6a4255d7-6f72-4f68-8d49-e8d683183d3b",
     "State": "Active",
     "LastUpdateStatus": "Successful"
 ```
+
+**NOTE**: You might see _"State": "Pending"_ in the result then go back to AWS web console to check if a new function is created or not.
 
 Go back to Amazon web console then validate a new function(`EnterServerlessFunctions`):
 
@@ -604,9 +685,11 @@ quarkus ext remove quarkus-funqy-amazon-lambda
 
 Update the `application.properties` for OpenShift Serverless deployment:
 
+**NOTE**: Replace `username` with your own account in the developer sandbox.
+
 ```yaml
 kubernetes.deployment.target=knative
-quarkus.container-image.group=quarkus-serverless
+quarkus.container-image.group=username-dev
 quarkus.container-image.registry=image-registry.openshift-image-registry.svc:5000
 quarkus.kubernetes-client.trust-certs=true
 quarkus.kubernetes.deploy=true
@@ -615,13 +698,35 @@ quarkus.openshift.build-strategy=docker
 
 **Note**: If you want to use your own OpenShift cluster, you need to install _OpenShift Serverless Operator_ and _Knative-Serving_. Find more information [here](https://docs.openshift.com/container-platform/4.8/serverless/admin_guide/install-serverless-operator.html).
 
+Make sure to log in the Developer Sandbox:
+
+![copy-login](./img/copy-login.png)
+
+Click on `DevSandbox` then click on `Display Token`. It will show *Log in with this token*.
+
+![copy-login-token](./img/copy-login-token.png)
+
+Copy the `oc login` command then paste it in your working terminal.
+
 Run the following Maven command to deploy the function to OpenShift Serverless:
+
+```shell
+quarkus build --no-tests
+```
+
+Or run the following maven package command:
 
 ```shell
 ./mvnw clean package -DskipTests
 ```
 
-The output will end with `BUILD SUCCESS`. Go to the `Topology` view in _OpenShift Developer console_:
+The output will end with `BUILD SUCCESS`. You can overwrite the pod label to show the Quarkus icon by running the following [oc](https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html) command:
+
+```shell
+oc label rev/enter-serverless-function-00001 app.openshift.io/runtime=quarkus --overwrite
+```
+
+Go to the `Topology` view in _OpenShift Developer console_:
 
 ![openshift](./img/openshift-funq.png)
 
@@ -630,12 +735,12 @@ You might see the pod is already **terminated** since the scale-down-to-zero is 
 Copy the `Route URL` in Resource tab menu then invoke the function using HTTPie:
 
 ```shell
-echo '"Daniel Oh"' | http http://enter-serverless-functions-quarkus-serverless.apps.cluster-ptgxq.ptgxq.sandbox526.opentlc.com/
+echo '"Daniel Oh"' | http https://enter-serverless-function-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 ```
 
 The output should look like:
 
-```
+```shell
 HTTP/1.1 200 OK
 content-length: 52
 content-type: application/json
@@ -647,37 +752,36 @@ x-envoy-upstream-service-time: 3943
 "Enter Serverless Functions with Quarkus, Daniel Oh"
 ```
 
-When you got back to the Topology view, you will see the Quarku pod is automatically scaled up in a second:
+When you got back to the Topology view, you will see the Quarkus pod is automatically scaled up in a second:
 
 ![openshift](./img/openshift-funq-up.png)
 
 **Note**: When you deploy a native executable, the build will take more than 5 mins to finish. You might also have an out of memory error. To fix it, make sure to set `Dquarkus.native.native-image-xmx=4g`.
 
-
 ## Generate a new function project using Kn func CLI  <a name="GenerateNewFuncProject"></a>
 
-**Note**: Red Hat OpenShift Serverless Function is still a Tech Preview feature. If you haven't installed Kn CLI yet, find more information [here](https://docs.openshift.com/container-platform/4.8/serverless/cli_tools/advanced-kn-config.html).
+**Note**: Red Hat OpenShift Serverless Function is still a Tech Preview feature. If you haven't installed Knative command (kn) yet, find more information [here](https://docs.openshift.com/container-platform/4.9/serverless/cli_tools/advanced-kn-config.html).
 
 Run the following command:
 
 ```shell
-kn func create quarkus-func -l quarkus -t events
+kn func create quarkus-func -l quarkus -t cloudevents
 ```
 
 The output should look like:
 
-```
-Function name: quarkus-func
-Runtime:       quarkus
-Template:      events
+```shell
+Created quarkus Function in /serverless-workshop/quarkus-func
 ```
 
 Inspect the new function project such as `func.yaml` and `Function.java`.
 
-Deploy the function directly to Red Hat OpenShift:
+Deploy the function directly to Red Hat OpenShift. Make sure to change the directory where the _func.yaml_ exists:
+
+**NOTE**: Replace `username` with your own account in the developer sandbox.
 
 ```shell
-kn func deploy -r <YOUR_CONTAINER_REGISTRY> -n quarkus-serverless -v
+kn func deploy -r <YOUR_CONTAINER_REGISTRY> -n useranme-dev -v
 
 ```
 
@@ -685,19 +789,19 @@ For example, the container registry looks like _quay.io/usrname_.
 
 Kn func uses Buildpack tool to build a function and deploy it to Kubernetes or OpenShift. Once the build is completed, you will see the output like:
 
-```
+```shell
 Waiting for Knative Service to become ready
-Function deployed at URL: http://quarkus-func-quarkus-serverless.apps.cluster-ptgxq.ptgxq.sandbox526.opentlc.com
+Function deployed at URL: https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 ```
 
-Go back to the Topology view, you will see a new function deployed:
+Go back to the Topology view, you will see a new function deployed. You can also overwrite the label by _oc_ command or OpenShift web console:
 
 ![openshift](./img/openshift-kn-funq.png)
 
 Send a new cloudevent message to the new function using Kn func emit:
 
 ```shell
-kn func emit --data "Daniel Oh" --sink http://quarkus-func-quarkus-serverless.apps.cluster-ptgxq.ptgxq.sandbox526.opentlc.com/
+kn func emit --data "Daniel Oh" --sink https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 ```
 
 The output should look like:

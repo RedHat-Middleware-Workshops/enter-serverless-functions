@@ -7,11 +7,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native-distroless -t quarkus/enter-serverless-functions .
+# docker build -f src/main/docker/Dockerfile.native-distroless -t quarkus/enter-serverless-function .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/enter-serverless-functions
+# docker run -i --rm -p 8080:8080 quarkus/enter-serverless-function
 #
 ###
 FROM quay.io/quarkus/quarkus-distroless-image:1.0
