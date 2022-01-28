@@ -239,7 +239,7 @@ Content-Type: text/plain;charset=UTF-8
 Enter Serverless Functions with Quarkus, daniel
 ```
 
-**Note**: You don’t need to stop and re-run re-run the serverless application because Quarkus will reload the changes automatically via the Live Coding feature.
+**Note**: You don’t need to stop and re-run the serverless application because Quarkus will reload the changes automatically via the Live Coding feature.
 
 To mirror the AWS Lambda environment as closely as possible in a dev environment, the Quarkus Amazon Lambda extension boots up a mock AWS Lambda event server in Quarkus Dev and Test mode. This mock event server simulates a true AWS Lambda environment.
 
@@ -291,7 +291,7 @@ Inspect generated files in the _target_ directory:
 
 **Note**: If you have already tested the function using live coding with Quarkus Dev mode, you can skip the function simulation locally. Then jump into the deployment step.
 
-To simulate the function locally using [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html):
+To simulate the function locally using [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html). The AWS SAM command line interface (CLI) requires you to set AWS credentials so that it can make calls to AWS services on your behalf. Find more information how to set up AWS credentials for SAM CLI [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-set-up-credentials.html).
 
 **NOTE**: You need to run a container runtime(e.g. [Docker](https://www.docker.com/products/docker-desktop)) to run the SAM emulator.
 
