@@ -339,6 +339,14 @@ Stop the local testing by _CTRL-C_ or _CMD-C_.
 
 **Note**: You can also use the live coding feature for Lambda functions development locally. Find more information [here](https://quarkus.io/guides/amazon-lambda#live-coding-and-unitintegration-testing)
 
+If you haven't already configured AWS credential locally (e.g., **~/.aws/credentials**) yet, run the following aws command line:
+
+```shell
+aws configure
+```
+
+Find more information about [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+
 Deploy the function to AWS Lambda using SAM CLI:
 
 ```shell
