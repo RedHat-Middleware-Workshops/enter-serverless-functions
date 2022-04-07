@@ -35,7 +35,7 @@ Before you get started with the hands-on labs, if you already haven't user accou
 
 Use `Quarkus CLI` to scaffold a new Quarkus project based on Maven. Run the following command locally in the Terminal:
 
-**Note**: You can use Maven or Gradle or Quarks tools in IDE instead of Quarkus CLI.
+**Note**: You can use [Maven](https://maven.apache.org/download.cgi) or [Gradle](https://gradle.org/install/) or Quarks tools in IDE instead of **Quarkus CLI**.
 
 ```shell
 quarkus create enter-serverless-function
