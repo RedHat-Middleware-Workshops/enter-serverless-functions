@@ -6,13 +6,22 @@ This hands-on lab showcases how quickly developers can create cloud-native micro
 
 Before you get started with the hands-on labs, if you already haven't user accounts in the sandbox and AWS, you might need to sign in two cloud services for function deployments such as OpenShift(Kubernetes) and AWS Lambda as below:
 
-* Sign in the [Developer Sandbox for Red Hat OpenShift](https://developers.redhat.com/developer-sandbox) to deploy Quarkus serverless functions to Kubernetes/OpenShift cluster. Click on `Get Started in the Sandbox`. You will need to create a new user account using your email address then your sandbox will stand up in 5 minutes.
+* Sign up the [Developer Sandbox for Red Hat OpenShift](https://developers.redhat.com/developer-sandbox) to deploy Quarkus serverless functions to Kubernetes/OpenShift cluster. Click on `Get Started in the Sandbox`. You will need to create a new user account using your email address then your sandbox will stand up in 5 minutes.
 
 ![dev-sandbox](./img/dev-sandbox.png)
 
-* Sing in [Amazon Web Services](https://aws.amazon.com/marketplace/management/signin). You might need to add your personal credit card information which won't charge for the function deployment during the lab. Because the function will be deleted at the end of the workshop.
+* Sing up [Amazon Web Services](https://aws.amazon.com/marketplace/management/signin). You might need to add your personal credit card information which won't charge for the function deployment during the lab. Because the function will be deleted at the end of the workshop.
 
 ![aws-signin](./img/aws-signin.png)
+
+* [JDK 11+](https://openjdk.java.net/install/) installed with `JAVA_HOME` configured appropriately
+
+* [Apache Maven](https://maven.apache.org/download.cgi) 3.8.1+
+
+* Optionally the [Quarkus CLI](https://quarkus.io/guides/cli-tooling) if you want to use it
+
+* Optionally the [HTTPie](https://httpie.io/) if you want to use it
+
 
 # Table of Contents
 1. [Generate a new Quarkus project](#GenerateNewQuarkusProject)
@@ -24,7 +33,7 @@ Before you get started with the hands-on labs, if you already haven't user accou
 
 ## Generate a new Quarkus project <a name="GenerateNewQuarkusProject"></a>
 
-Use [Quarkus CLI](https://quarkus.io/guides/cli-tooling#installing-the-cli) to scaffold a new Quarkus project based on Maven. Run the following command locally in the Terminal:
+Use `Quarkus CLI` to scaffold a new Quarkus project based on Maven. Run the following command locally in the Terminal:
 
 **Note**: You can use Maven or Gradle or Quarks tools in IDE instead of Quarkus CLI.
 
@@ -730,9 +739,20 @@ Or run the following maven package command:
 
 The output will end with `BUILD SUCCESS`. You can overwrite the pod label to show the Quarkus icon by running the following [oc](https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html) command:
 
+
 ```shell
 oc label rev/enter-serverless-function-00001 app.openshift.io/runtime=quarkus --overwrite
 ```
+
+_Note_ that if you deployed the function multiple times, the revision number (e.g. _00001_) should be different.
+
+Add the **function** icon to the Knative service by running the following oc command:
+
+```shell
+oc label ksvc/enter-serverless-function boson.dev/function=true --overwrite
+```
+
+
 
 Go to the `Topology` view in _OpenShift Developer console_:
 
@@ -773,6 +793,7 @@ When you got back to the Topology view, you will see the Quarkus pod is automati
 Run the following command:
 
 ```shell
+cd .. &&
 kn func create quarkus-func -l quarkus -t cloudevents
 ```
 
@@ -786,16 +807,17 @@ Inspect the new function project such as `func.yaml` and `Function.java`.
 
 Deploy the function directly to Red Hat OpenShift. Make sure to change the directory where the _func.yaml_ exists:
 
-**NOTE**: Replace `username` with your own account in the developer sandbox.
+**NOTE**: Replace `YOUR_USERNAME` with your own account in the developer sandbox.
 
 ```shell
-kn func deploy -r <YOUR_CONTAINER_REGISTRY> -n useranme-dev -v
+cd quarkus-func &&
+kn func deploy -r <YOUR_CONTAINER_REGISTRY> -n YOUR_USERNAME-dev -v
 
 ```
 
 For example, the container registry looks like _quay.io/usrname_.
 
-Kn func uses Buildpack tool to build a function and deploy it to Kubernetes or OpenShift. Once the build is completed, you will see the output like:
+Kn func uses [Buildpack](https://buildpacks.io/) tool to build a function and deploy it to Kubernetes or OpenShift. Once the build is completed, you will see the output like:
 
 ```shell
 Waiting for Knative Service to become ready
@@ -837,6 +859,8 @@ When you go to the pod logs in OpenShift console, you will see the same cloudeve
 
 * [A guide to Java serverless functions](https://opensource.com/downloads/java-serverless-ebook)
 * [Getting Started with Quarkus Serverless Functions](https://dzone.com/refcardz/getting-started-with-quarkus-serverless-functions)
+* [Build your first Java Serverless Function using Quarkus Quick start](https://youtu.be/W2QPxfEU_bw)
 * [Quarkus Funqy OpenShift Serverless](https://youtu.be/fQFVwoXWRto)
 * [Deploying Quarkus based Amazon Lambdas](https://youtu.be/BOvxdY8cSHw)
 * [Make Quarkus Serverless from Devfiles to OpenShift](https://youtu.be/3LtTQml7Gv8)
+* [Microsweeper Demo with Quarkus on Azure Red Hat OpenShift](https://youtu.be/zYSQdX-tVsE)
