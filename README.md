@@ -793,7 +793,7 @@ When you got back to the Topology view, you will see the Quarkus pod is automati
 Run the following command:
 
 ```shell
-cd .. &&
+cd ..
 kn func create quarkus-func -l quarkus -t cloudevents
 ```
 
@@ -810,7 +810,7 @@ Deploy the function directly to Red Hat OpenShift. Make sure to change the direc
 **NOTE**: Replace `YOUR_USERNAME` with your own account in the developer sandbox.
 
 ```shell
-cd quarkus-func &&
+cd quarkus-func
 kn func deploy -r <YOUR_CONTAINER_REGISTRY> -n YOUR_USERNAME-dev -v
 
 ```
