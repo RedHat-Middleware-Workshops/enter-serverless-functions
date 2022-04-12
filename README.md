@@ -38,7 +38,7 @@ Use `Quarkus CLI` to scaffold a new Quarkus project based on Maven. Run the foll
 **Note**: You can use [Maven](https://maven.apache.org/download.cgi) or [Gradle](https://gradle.org/install/) or Quarks tools in IDE instead of **Quarkus CLI**.
 
 ```shell
-quarkus create enter-serverless-function
+quarkus create app enter-serverless-function
 
 ```
 
