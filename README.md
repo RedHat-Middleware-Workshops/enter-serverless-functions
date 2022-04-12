@@ -193,8 +193,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.jboss.resteasy.annotations.jaxrs.PathParam;
-
 @Path("/hello")
 public class GreetingResource {
 
@@ -204,7 +202,7 @@ public class GreetingResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/greeting/{name}")
-    public String greeting(@PathParam String name) {
+    public String greeting(String name) {
         return greetingService.greeting(name);
     }
 
@@ -277,7 +275,7 @@ All 1 test is passing (0 skipped), 1 test was run in 3541ms. Tests completed at 
 Press [r] to re-run, [o] Toggle test output, [h] for more options>
 ```
 
-Stop the Dev Mode! Package the application using the following Quarkus CLI:
+Stop the Dev Mode using `CTRL-C`! Package the application using the following Quarkus CLI:
 
 ```shell
 quarkus build --no-tests
@@ -344,7 +342,7 @@ Server: Werkzeug/1.0.1 Python/3.8.11
 Enter Serverless Functions with Quarkus, awslocal
 ```
 
-Stop the local testing by _CTRL-C_ or _CMD-C_.
+Stop the local testing by `CTRL-C`!
 
 **Note**: You can also use the live coding feature for Lambda functions development locally. Find more information [here](https://quarkus.io/guides/amazon-lambda#live-coding-and-unitintegration-testing)
 
