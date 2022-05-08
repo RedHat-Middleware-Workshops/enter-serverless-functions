@@ -829,22 +829,13 @@ Go back to the Topology view, you will see a new function deployed. You can also
 Send a new cloudevent message to the new function using Kn func emit:
 
 ```shell
-kn func emit --data "Daniel Oh" --sink https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 ```
 
 The output should look like:
 
 ```shell
-Context Attributes,
-  specversion: 1.0
-  type: function.output
-  source: function
-  id: 576e78f2-8f9f-4990-97d5-6ffd5cf62c9e
-  datacontenttype: application/json
-Data,
-  {
-    "message": "Daniel Oh"
-  }
+Invoked https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 ```
 
 When you go to the pod logs in OpenShift console, you will see the same cloudevent message output:
