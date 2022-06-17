@@ -15,4 +15,3 @@ This hands-on lab showcases how quickly developers can create cloud-native micro
 * Deploy the function to Red Hat OpenShift Serverless
 * Generate a new function project using Kn func CLI
 * Summary
-
