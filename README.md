@@ -577,11 +577,11 @@ Configuring SAM deploy
 
 Once you deploy it successfully, go back to the AWS console. You have new resources now.
 
-* AWS HTTP Gateway API
+#### AWS HTTP Gateway API
 
 ![api](./img/aws-gateapi2.png)
 
-* AWS Lambda
+#### AWS Lambda
 
 ![function](./img/aws-function2.png)
 
