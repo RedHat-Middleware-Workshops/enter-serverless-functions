@@ -37,7 +37,8 @@ Before you get started with the hands-on labs, if you already haven't user accou
 
 Use `Quarkus CLI` to scaffold a new Quarkus project based on Maven. Run the following command locally in the Terminal:
 
-**Note**: You can use [Maven](https://maven.apache.org/download.cgi) or [Gradle](https://gradle.org/install/) or Quarks tools in IDE instead of **Quarkus CLI**.
+> **_NOTE:_**
+You can use [Maven](https://maven.apache.org/download.cgi) or [Gradle](https://gradle.org/install/) or Quarks tools in IDE instead of **Quarkus CLI**.
 
 ```shell
 quarkus create app enter-serverless-function
@@ -525,7 +526,8 @@ Enter Serverless Functions with Quarkus, awsprod
 
 Deploy a native executable to AWS Lambda. Package the application once again using the following command:
 
-**Note**: When you build a native executable on macOS, you need to add the following configuration in _src/main/resources/application.properties_ for building a Linux format image using Docker runtime:
+> **_NOTE:_**
+When you build a native executable on *macOS*, you need to add the following configuration in _src/main/resources/application.properties_ for building a Linux format image using Docker runtime:
 
 ```yaml
 quarkus.native.container-runtime=docker
@@ -751,7 +753,8 @@ quarkus ext remove quarkus-funqy-amazon-lambda
 
 Update the `application.properties` for OpenShift Serverless deployment:
 
-**NOTE**: Replace `username` with your own account in the developer sandbox.
+> **_NOTE:_**
+Replace `username` with your own account in the developer sandbox.
 
 ```yaml
 kubernetes.deployment.target=knative
