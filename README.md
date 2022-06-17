@@ -18,6 +18,8 @@ Before you get started with the hands-on labs, if you already haven't user accou
 
 * [Apache Maven](https://maven.apache.org/download.cgi) 3.8.1+
 
+* [Knative CLI](https://docs.openshift.com/container-platform/4.10/serverless/cli_tools/installing-kn.html)
+
 * Optionally the [Quarkus CLI](https://quarkus.io/guides/cli-tooling) if you want to use it
 
 * Optionally the [HTTPie](https://httpie.io/) if you want to use it
@@ -869,15 +871,13 @@ Inspect the new function project such as `func.yaml` and `Function.java`.
 
 Deploy the function directly to Red Hat OpenShift. Make sure to change the directory where the _func.yaml_ exists:
 
-Replace `YOUR_USERNAME` with your own account in the developer sandbox.
+Replace `YOUR_USERNAME` with your own account in the developer sandbox. You also need to replace `YOUR_CONTAINER_REGISTRY` with an external container registry that you want to push the image. For example, *quay.io/danieloh30*
 
 ```shell
 cd quarkus-func
-kn func deploy -r <YOUR_CONTAINER_REGISTRY> -n YOUR_USERNAME-dev -v
+kn func deploy -r YOUR_CONTAINER_REGISTRY -n YOUR_USERNAME-dev -v
 
 ```
-
-For example, the container registry looks like _quay.io/usrname_.
 
 Kn func uses [Buildpack](https://buildpacks.io/) tool to build a function and deploy it to Kubernetes or OpenShift. Once the build is completed, you will see the output like:
 
@@ -886,20 +886,30 @@ Waiting for Knative Service to become ready
 Function deployed at URL: https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
 ```
 
-Go back to the Topology view, you will see a new function deployed. You can also overwrite the label by _oc_ command or OpenShift web console:
+Go back to the `Topology` view in the developer sandbox, you will see a new function deployed. You can also overwrite the Quarkus label by _oc_ command or OpenShift web console:
 
 ![openshift](./img/openshift-kn-funq.png)
 
-Send a new cloudevent message to the new function using Kn func emit:
+Send a new `cloudevent` message to the new function using Kn func emit:
 
 ```shell
-kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=YOUR_FUNCTION_URL
 ```
 
 The output should look like:
 
 ```shell
-Invoked https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+p1.openshiftapps.com
+Context Attributes,
+  specversion: 1.0
+  type: function.output
+  source: function
+  id: ceb3f86a-bc4c-49db-8a82-d69b1ed81aab
+  datacontenttype: application/json
+Data,
+  {
+    "message": "Daniel Oh"
+  }
 ```
 
 When you go to the pod logs in OpenShift console, you will see the same cloudevent message output:
