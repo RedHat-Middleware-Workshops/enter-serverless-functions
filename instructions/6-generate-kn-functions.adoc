@@ -76,4 +76,4 @@ image::../images/openshift-cloudevent-log.png[openshift-cloudevent-log]
 
 ➡️ link:./7-summary.adoc[7. Summary]
 
-⬅️ link:./5-deploy-quarkus-functions.adoc[6.Deploy the function to Red Hat OpenShift Serverless]
+⬅️ link:./5-deploy-quarkus-functions.adoc[5. Deploy the function to Red Hat OpenShift Serverless]
