@@ -251,10 +251,8 @@ Content-Type: text/plain;charset=UTF-8
 Enter Serverless Functions with Quarkus, daniel
 ```
 
-[NOTE]
-====
+> **_NOTE:_**
 You don’t need to stop and re-run the serverless application because Quarkus will reload the changes automatically via the `Live Coding` feature.
-====
 
 To mirror the AWS Lambda environment as closely as possible in a dev environment, the Quarkus Amazon Lambda extension boots up a mock AWS Lambda event server in Quarkus Dev and Test mode. This mock event server simulates a true AWS Lambda environment.
 
@@ -314,10 +312,8 @@ Inspect generated files in the _target_ directory:
 * **sam.jvm.yaml** - (optional) for use with sam cli and local testing
 * **sam.native.yaml** - (optional) for use with sam cli and native local testing
 
-[NOTE]
-====
+> **_NOTE:_**
 If you have already tested the function using live coding with Quarkus Dev mode, you can skip the function simulation locally. Then jump into the deployment step.
-====
 
 To simulate the function locally using [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html). The AWS SAM command line interface (CLI) requires you to set AWS credentials so that it can make calls to AWS services on your behalf. Find more information how to set up AWS credentials for SAM CLI [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-set-up-credentials.html).
 
@@ -365,10 +361,8 @@ Enter Serverless Functions with Quarkus, awslocal
 
 Stop the local testing by `CTRL-C`!
 
-[NOTE]
-====
+> **_NOTE:_**
 You can also use the live coding feature for Lambda functions development locally. Find more information [here](https://quarkus.io/guides/amazon-lambda#live-coding-and-unitintegration-testing)
-====
 
 If you haven't already configured `AWS credential` locally (e.g., **~/.aws/credentials**) yet, run the following aws command line:
 
@@ -410,10 +404,8 @@ Configuring SAM deploy
 
 ```
 
-[NOTE]
-====
+> **_NOTE:_**
 If you have a `S3 Bucket does not exist` error, you probably have old CloudFormation Stack that looks up to the `aws-sam-cli-managed-default-samclisourcebucket` service. In that case, Go to *CloundFormation Service* in the AWS portal. Then, delete *aws-sam-cli-managed-default* stack.
-====
 
 Then, you might need to confirm your configurations as below:
 
@@ -482,10 +474,8 @@ Value               https://wcji0ss0ge.execute-api.us-east-1.amazonaws.com/
 Successfully created/updated stack - quarkus-function in us-east-1
 ```
 
-[NOTE]
-====
+> **_NOTE:_**
 During the `sam deploy`, CloudFormation template will be created automatically (This is not stored in target directory though). Then you can monitor the function in AWS console.
-====
 
 ### Verify the Function in AWS Console
 
@@ -715,10 +705,8 @@ The output should look like:
 }
 ```
 
-[NOTE]
-====
+> **_NOTE:_**
 You probably see _"State": "Pending"_ in the result then go back to AWS web console to check if a new function is created or not.
-====
 
 Press `q` to exit from the output terminal.
 
@@ -773,10 +761,8 @@ quarkus.kubernetes.deploy=true
 quarkus.openshift.build-strategy=docker
 ```
 
-[NOTE]
-====
+> **_NOTE:_**
 If you want to use your own OpenShift cluster, you need to install _OpenShift Serverless Operator_ and _Knative-Serving_. Find more information [here](https://docs.openshift.com/container-platform/4.8/serverless/admin_guide/install-serverless-operator.html).
-====
 
 Make sure to log in the Developer Sandbox:
 
@@ -845,10 +831,8 @@ When you got back to the Topology view, you will see the Quarkus pod is automati
 
 ![openshift](./img/openshift-funq-up.png)
 
-[NOTE]
-====
+> **_NOTE:_**
 When you deploy a native executable, the build will take more than 5 mins to finish. You might also have an out of memory error. To fix it, make sure to set `Dquarkus.native.native-image-xmx=4g`.
-====
 
 ## Generate a new function project using Kn func CLI  <a name="GenerateNewFuncProject"></a>
 
