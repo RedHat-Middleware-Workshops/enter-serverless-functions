@@ -482,19 +482,19 @@ During the `sam deploy`, CloudFormation template will be created automatically (
 
 Go to [AWS Console](https://console.aws.amazon.com/) then navigate the following resources if they are automatically created along with the Quarkus function.
 
-* AWS API Gateway
+#### AWS API Gateway
 
 A new API gateway(e.g., _quarkus-function_) will show up when you specified it during the SAM deployment:
 
 ![api](./img/aws-gateapi.png)
 
-* AWS Identity and Access Management (IAM)
+#### AWS Identity and Access Management (IAM)
 
 A new role for the Quarkus function will show up:
 
 ![iam](./img/aws-iam.png)
 
-* AWS Lambda
+#### AWS Lambda
 
 A new Quarkus function will show up:
 
