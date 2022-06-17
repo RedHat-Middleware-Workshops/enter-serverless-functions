@@ -1,4 +1,4 @@
-= Optimize the function and make it portable using Quarkus Funqy
+= 4. Optimize the function and make it portable using Quarkus Funqy
 
 Add a Quarkus Funqy extension for Amazon Lambda deployment(_quarkus-funqy-amazon-lambda_) and remove the _quarkus-amazon-lambda-http_ extension:
 

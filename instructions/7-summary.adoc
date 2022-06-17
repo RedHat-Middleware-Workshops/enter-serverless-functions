@@ -1,4 +1,4 @@
-= Summary
+= 7. Summary
 
 You've learned today how quickly Java developers can create cloud-native microservice project using [Quarkus](https://quarkus.io/). Then, the applications were deployed to serverless functions to [AWS Lambda](https://aws.amazon.com/lambda/) and [Kubernetes](https://kubernetes.io/) [Knative](https://knative.dev/docs/) with `JVM` and `Native` mode with the key benefits of Quarkus as below:
 

@@ -1,4 +1,4 @@
-= Generate a new function project using Kn func CLI
+= 6. Generate a new function project using Kn func CLI
 
 [NOTE]
 ====

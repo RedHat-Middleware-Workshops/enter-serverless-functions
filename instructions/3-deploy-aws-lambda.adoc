@@ -1,4 +1,4 @@
-= Deploy to AWS Lambda with HTTP API
+= 3. Deploy to AWS Lambda with HTTP API
 
 To deploy this application to AWS Lambda with HTTP API, add a new Quarkus extension(_quarkus-amazon-lambda-http_) using Quarkus CLI:
 

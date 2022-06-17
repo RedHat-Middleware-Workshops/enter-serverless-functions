@@ -1,4 +1,4 @@
-= Prerequisites
+= 1. Prerequisites
 
 Before you get started with the hands-on labs, if you already haven't user accounts in the sandbox and AWS, you might need to sign in two cloud services for function deployments such as OpenShift(Kubernetes) and AWS Lambda as below:
 

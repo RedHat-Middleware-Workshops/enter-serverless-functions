@@ -1,4 +1,4 @@
-= Generate a new Quarkus project
+= 2. Generate a new Quarkus project
 
 Use `Quarkus CLI` to scaffold a new Quarkus project based on Maven. Run the following command locally in the Terminal:
 

@@ -1,4 +1,4 @@
-= Deploy the function to Red Hat OpenShift Serverless
+= 5.Deploy the function to Red Hat OpenShift Serverless
 
 You'll use the https://developers.redhat.com/developer-sandbox[Developer Sandbox^] to deploy a Quarkus function. The sandbox allows developers to access Red Hat’s products and technologies without setup or configuration, and start developing quicker than ever before with our new sandbox environments for Red Hat OpenShift and CodeReady Workspaces. Try your hand at the technologies with our library of activities as well. You need to sign up the https://developers.redhat.com/developer-sandbox/get-started[Red Hat Developer Program^] first to provision a free sandbox. It will take less than 5 min from sign up to create a new cluster along the way.
 
