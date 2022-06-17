@@ -1,6 +1,6 @@
 # Enter Serverless Functions Journey with Quarkus
 
-This hands-on lab showcases how quickly developers can create cloud-native microservice project using [Quarkus](https://quarkus.io/). Then, the application can be deployed to a function to AWS Lambda and OpenShift Serverless with JVM and Native mode.
+This hands-on lab showcases how quickly developers can create cloud-native microservice project using [Quarkus](https://quarkus.io/). Then, the application can be deployed to a function to [AWS Lambda](https://aws.amazon.com/lambda/) and [Kubernetes](https://kubernetes.io/) [Knative](https://knative.dev/docs/) with `JVM` and `Native` mode.
 
 # Pre-requisites
 
