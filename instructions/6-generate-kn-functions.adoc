@@ -72,6 +72,7 @@ When you go to the pod logs in OpenShift console, you will see the same cloudeve
 
 image::../images/openshift-cloudevent-log.png[openshift-cloudevent-log]
 
-== Congratulations!
+=== Congratulations!
 
+← Previous section: link:./5-deploy-quarkus-functions.adoc[Deploy the function to Red Hat OpenShift Serverless]
 ➡️ Next section: link:./7-summary.adoc[Summary]

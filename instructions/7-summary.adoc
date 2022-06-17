@@ -32,3 +32,5 @@ image::../images/quarkus-funqy.png[quarkus-funqy]
 * https://youtu.be/3LtTQml7Gv8[Make Quarkus Serverless from Devfiles to OpenShift^]
 * https://youtu.be/zYSQdX-tVsE[Microsweeper Demo with Quarkus on Azure Red Hat OpenShift^]
 * https://youtu.be/UBDzHnDjc_g[Microsweeper Demo with Quarkus on Red Hat OpenShift Service on AWS^]
+
+← Previous section: link:./6-generate-kn-functions.adoc[Generate a new function project using Kn func CLI]
