@@ -140,6 +140,6 @@ sam delete --stack-name quarkus-native-function
 
 If you want to deploy the Quarkus Funqy application as a native executables, you need to package a native executable first using `./mvnw clean package -Pnative` then run the wrapper script using `LAMBDA_ROLE_ARN=<YOUR_OWN_ARN> sh target/manage.sh native create`.
 
-➡️ Next section: link:./5-deploy-quarkus-functions.adoc[Deploy the function to Red Hat OpenShift Serverless]
+➡️ link:./5-deploy-quarkus-functions.adoc[5. Deploy the function to Red Hat OpenShift Serverless]
 
-⬅️ Previous section: link:./3-deploy-aws-lambda.adoc[Deploy to AWS Lambda with HTTP API]
+⬅️ link:./3-deploy-aws-lambda.adoc[3. Deploy to AWS Lambda with HTTP API]

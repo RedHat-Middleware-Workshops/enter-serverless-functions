@@ -111,6 +111,6 @@ image::../images/openshift-funq-up.png[openshift-funq-up]
 When you deploy a native executable, the build will take more than 5 mins to finish. You might also have an out of memory error. To fix it, make sure to set `Dquarkus.native.native-image-xmx=4g`.
 ====
 
-➡️ Next section: link:./6-generate-kn-functions.adoc[Generate a new function project using Kn func CLI]
+➡️ link:./6-generate-kn-functions.adoc[6. Generate a new function project using Kn func CLI]
 
-⬅️ Previous section: link:./4-optimize-quarkus-functions.adoc[Optimize the function and make it portable using Quarkus Funqy]
+⬅️ Previous section: link:./4-optimize-quarkus-functions.adoc[4. Optimize the function and make it portable using Quarkus Funqy]

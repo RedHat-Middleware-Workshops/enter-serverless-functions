@@ -521,6 +521,6 @@ You can showcase the performance stats to compare *JVM* vs. *Native* function in
 
 image::../images/aws-metrics.png[aws-metrics]
 
-➡️ Next section: link:./4-optimize-quarkus-functions.adoc[Optimize the function and make it portable using Quarkus Funqy]
+➡️ link:./4-optimize-quarkus-functions.adoc[4. Optimize the function and make it portable using Quarkus Funqy]
 
-⬅️ Previous section: link:./2-generate-quarkus-project.adoc[Generate a new Quarkus project]
+⬅️ link:./2-generate-quarkus-project.adoc[2. Generate a new Quarkus project]

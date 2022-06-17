@@ -20,4 +20,4 @@ image::../images/aws-signin.png[aws-signin]
 
 * https://httpie.io[HTTPie^]
 
-➡️ Next section: link:./2-generate-quarkus-project.adoc[Generate a new Quarkus project]
+➡️ link:./2-generate-quarkus-project.adoc[2. Generate a new Quarkus project]
