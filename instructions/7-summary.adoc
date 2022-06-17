@@ -18,7 +18,7 @@ image::../images/quarkus-funqy.png[quarkus-funqy]
 
 == Resources
 
-=== Docs
+=== eBook and Blogs
 
 * https://opensource.com/downloads/java-serverless-ebook[A guide to Java serverless functions^]
 * https://dzone.com/refcardz/getting-started-with-quarkus-serverless-functions[Getting Started with Quarkus Serverless Functions^]
