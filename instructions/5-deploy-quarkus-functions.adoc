@@ -113,4 +113,4 @@ When you deploy a native executable, the build will take more than 5 mins to fin
 
 ➡️ link:./6-generate-kn-functions.adoc[6. Generate a new function project using Kn func CLI]
 
-⬅️ Previous section: link:./4-optimize-quarkus-functions.adoc[4. Optimize the function and make it portable using Quarkus Funqy]
+⬅️ link:./4-optimize-quarkus-functions.adoc[4. Optimize the function and make it portable using Quarkus Funqy]
