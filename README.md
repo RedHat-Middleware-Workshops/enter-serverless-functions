@@ -317,7 +317,8 @@ If you have already tested the function using live coding with Quarkus Dev mode,
 
 To simulate the function locally using [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html). The AWS SAM command line interface (CLI) requires you to set AWS credentials so that it can make calls to AWS services on your behalf. Find more information how to set up AWS credentials for SAM CLI [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-set-up-credentials.html).
 
-**NOTE**: You need to run a container runtime(e.g. [Docker](https://www.docker.com/products/docker-desktop)) to run the SAM emulator.
+> **_NOTE:_**
+You need to run a container runtime(e.g. [Docker](https://www.docker.com/products/docker-desktop)) to run the SAM emulator.
 
 ```shell
 sam local start-api -t target/sam.jvm.yaml
@@ -836,7 +837,8 @@ When you deploy a native executable, the build will take more than 5 mins to fin
 
 ## Generate a new function project using Kn func CLI  <a name="GenerateNewFuncProject"></a>
 
-**Note**: Red Hat OpenShift Serverless Function is still a Tech Preview feature. If you haven't installed Knative command (kn) yet, find more information [here](https://docs.openshift.com/container-platform/4.10/serverless/cli_tools/advanced-kn-config.html).
+> **_NOTE:_** 
+Red Hat OpenShift Serverless Function is still a Tech Preview feature. If you haven't installed Knative command (kn) yet, find more information [here](https://docs.openshift.com/container-platform/4.10/serverless/cli_tools/advanced-kn-config.html).
 
 Run the following command:
 
