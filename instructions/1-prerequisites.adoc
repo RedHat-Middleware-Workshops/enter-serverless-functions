@@ -16,8 +16,8 @@ image::../images/aws-signin.png[aws-signin]
 
 * https://docs.openshift.com/container-platform/4.10/serverless/cli_tools/installing-kn.html[Knative CLI^]
 
-* Optionally the https://quarkus.io/guides/cli-tooling[Quarkus CLI^] if you want to use it
+* https://quarkus.io/guides/cli-tooling[Quarkus CLI^] if you want to use it
 
-* Optionally the https://httpie.io[HTTPie^] if you want to use it
+* https://httpie.io[HTTPie^] if you want to use it
 
 ➡️ Next section: link:./2-generate-quarkus-project.adoc[Generate a new Quarkus project]
