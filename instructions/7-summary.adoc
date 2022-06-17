@@ -16,9 +16,9 @@ Quarkus funqy also provides the other extensions for you to deploy the serverles
 
 image::../images/quarkus-funqy.png[quarkus-funqy]
 
-== Additional Resources
+== Resources
 
-=== eBook and Blogs
+=== Docs
 
 * https://opensource.com/downloads/java-serverless-ebook[A guide to Java serverless functions^]
 * https://dzone.com/refcardz/getting-started-with-quarkus-serverless-functions[Getting Started with Quarkus Serverless Functions^]
