@@ -909,10 +909,12 @@ When you go to the pod logs in OpenShift console, you will see the same cloudeve
 
 ## Additional Resources  <a name="AdditionalResources"></a>
 
-* [A guide to Java serverless functions](https://opensource.com/downloads/java-serverless-ebook)
-* [Getting Started with Quarkus Serverless Functions](https://dzone.com/refcardz/getting-started-with-quarkus-serverless-functions)
-* [Build your first Java Serverless Function using Quarkus Quick start](https://youtu.be/W2QPxfEU_bw)
-* [Quarkus Funqy OpenShift Serverless](https://youtu.be/fQFVwoXWRto)
-* [Deploying Quarkus based Amazon Lambdas](https://youtu.be/BOvxdY8cSHw)
-* [Make Quarkus Serverless from Devfiles to OpenShift](https://youtu.be/3LtTQml7Gv8)
-* [Microsweeper Demo with Quarkus on Azure Red Hat OpenShift](https://youtu.be/zYSQdX-tVsE)
+* [eBook - A guide to Java serverless functions](https://opensource.com/downloads/java-serverless-ebook)
+* [Dzone RefCard - Getting Started with Quarkus Serverless Functions](https://dzone.com/refcardz/getting-started-with-quarkus-serverless-functions)
+* [InfoQ - Reduce Carbon Dioxide Emissions with Serverless and Kubernetes Native Java](https://www.infoq.com/articles/reduce-CO2-with-serveless/)
+* [Video - Build your first Java Serverless Function using Quarkus Quick start](https://youtu.be/W2QPxfEU_bw)
+* [Video - Quarkus Funqy OpenShift Serverless](https://youtu.be/fQFVwoXWRto)
+* [Video - Deploying Quarkus based Amazon Lambdas](https://youtu.be/BOvxdY8cSHw)
+* [Video - Make Quarkus Serverless from Devfiles to OpenShift](https://youtu.be/3LtTQml7Gv8)
+* [Video - Microsweeper Demo with Quarkus on Azure Red Hat OpenShift](https://youtu.be/zYSQdX-tVsE)
+* [Video - Microsweeper Demo with Quarkus on Red Hat OpenShift Service on AWS](https://youtu.be/UBDzHnDjc_g)
