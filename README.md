@@ -6,11 +6,11 @@ This hands-on lab showcases how quickly developers can create cloud-native micro
 
 Before you get started with the hands-on labs, if you already haven't user accounts in the sandbox and AWS, you might need to sign in two cloud services for function deployments such as OpenShift(Kubernetes) and AWS Lambda as below:
 
-* Sign up the [Developer Sandbox for Red Hat OpenShift](https://developers.redhat.com/developer-sandbox) to deploy Quarkus serverless functions to Kubernetes/OpenShift cluster. Click on `Get Started in the Sandbox`. You will need to create a new user account using your email address then your sandbox will stand up in 5 minutes.
+* Sign up the [Developer Sandbox for Red Hat OpenShift](https://developers.redhat.com/developer-sandbox/get-started) to deploy Quarkus serverless functions to Kubernetes/OpenShift cluster. Click on `Launch your Developer Sandbox for Red Hat OpenShift` in the _Get Started in the Sandbox_ page. You will need to create a new user account using your email address then your sandbox will stand up in 5 minutes.
 
 ![dev-sandbox](./img/dev-sandbox.png)
 
-* Sing up [Amazon Web Services](https://aws.amazon.com/marketplace/management/signin). You might need to add your personal credit card information which won't charge for the function deployment during the lab. Because the function will be deleted at the end of the workshop.
+* Sing up [Amazon Web Services](https://aws.amazon.com/marketplace/management/signin). You might need to add your personal credit card information which *won't* charge for the function deployment during the lab. Because the function will be deleted at the end of the workshop.
 
 ![aws-signin](./img/aws-signin.png)
 
@@ -81,20 +81,27 @@ __  ____  __  _____   ___  __ ____  ______
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-INFO  [io.quarkus] (Quarkus Main Thread) enter-serverless-function 1.0.0-SNAPSHOT on JVM (powered by Quarkus xx.xx.xx) started in 1.746s. Listening on: http://localhost:8080
-INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, resteasy, smallrye-context-propagation]
+2022-06-17 07:43:33,430 INFO  [io.quarkus] (Quarkus Main Thread) enter-serverless-function 1.0.0-SNAPSHOT on JVM (powered by Quarkus 2.9.2.Final) started in 1.754s. Listening on: http://localhost:8080
+
+2022-06-17 07:43:33,446 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2022-06-17 07:43:33,447 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, resteasy-reactive, smallrye-context-propagation, vertx]
 
 --
 Tests paused
-Press [r] to resume testing, [o] Toggle test output, [h] for more options>
+Press [r] to resume testing, [o] Toggle test output, [:] for the terminal, [h] for more options>
 ```
 
-Press `r` to start the _continuous testing_ then press `d` to open a _DEV UI_. It will open a new web browser then access to DEV UI (http://localhost:8080/q/dev/):
+Press `r` to start the _continuous testing_ then press `d` to open a _DEV UI_. It will open a new web browser then access to DEV UI (http://localhost:8080/q/dev/).
+
+You'll also see `All tests passed` on the right bottom that points the result of the continuous testing.
 
 ![devui](./img/devui.png)
 
-Verify the RESTful API if it works well. For example, use [HTTPie](https://httpie.io/) to invoke the endpoint:
+When you click on `Open` on the left bottom, you will see the readonly log terminal. 
+
+![devui](./img/devui-open-terminal.png)
+
+Verify the RESTful API if it works well. For example, use [HTTPie](https://httpie.io/) to invoke the endpoint in your local terminal:
 
 ```shell
 http :8080/hello
@@ -104,10 +111,10 @@ The output should be:
 
 ```shell
 HTTP/1.1 200 OK
-Content-Length: 14
 Content-Type: text/plain;charset=UTF-8
+content-length: 28
 
-Hello RESTEasy
+Hello from RESTEasy Reactive
 ```
 
 You can also use `curl` command to access the endpoint:
@@ -144,23 +151,23 @@ The output looks like:
 Listing extensions (default action, see --help).
 Current Quarkus extensions installable: 
 
-...                      
-camel-quarkus-aws2-eventbridge                    
-camel-quarkus-aws2-iam                                                    
-camel-quarkus-aws2-msk                            
+✬ ArtifactId                                         Extension Name
+✬ camel-quarkus-aws2-athena                          Camel AWS 2 Athena
+✬ camel-quarkus-aws2-cw                              Camel AWS 2 CloudWatch
+✬ camel-quarkus-aws2-ddb                             Camel AWS 2 DynamoDB                      
 ...                 
-camel-quarkus-aws2-translate                      
-quarkus-amazon-alexa                              
-...                         
-quarkus-amazon-lambda                             
-quarkus-amazon-lambda-rest    
-quarkus-amazon-lambda-xray                                           
-quarkus-amazon-s3                                 
-...                     
-quarkus-amazon-ssm                                
-quarkus-funqy-amazon-lambda                       
-quarkus-hibernate-search-orm-elasticsearch-aws    
-...
+✬ quarkus-amazon-lambda                              AWS Lambda
+✬ quarkus-amazon-lambda-http                         AWS Lambda HTTP
+✬ quarkus-amazon-lambda-rest                         AWS Lambda Gateway REST API
+✬ quarkus-amazon-lambda-xray                         AWS Lambda X-Ray
+✬ quarkus-amazon-s3                                  Amazon S3
+✬ quarkus-amazon-secretsmanager                      Amazon Secrets Manager
+✬ quarkus-amazon-ses                                 Amazon SES
+✬ quarkus-amazon-sns                                 Amazon SNS
+✬ quarkus-amazon-sqs                                 Amazon SQS
+✬ quarkus-amazon-ssm                                 Amazon SSM
+✬ quarkus-funqy-amazon-lambda                        Funqy AWS Lambda Binding
+  quarkus-hibernate-search-orm-elasticsearch-aws     Hibernate Search + Elasticsearch - AWS authentication and request signing
 ```
 
 Before we deploy, let's add a new method and class to expose a new function on AWS Lambda.
