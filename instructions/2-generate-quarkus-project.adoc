@@ -103,3 +103,5 @@ curl localhost:8080/hello
 Keep *running* your Quarkus dev mode!! 
 
 ➡️ Next section: link:./3-deploy-aws-lambda.adoc[Deploy to AWS Lambda with HTTP API]
+
+⬅️ Previous section: link:./1-prerequisites.adoc[Prerequisites]
