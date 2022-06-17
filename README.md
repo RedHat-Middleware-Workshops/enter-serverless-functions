@@ -4,7 +4,8 @@ This hands-on lab showcases how quickly developers can create cloud-native micro
 
 ![quarkus-serverless-logo](./imges/quarkus-serverless-logo.png)
 
-# Table of Contents
+## Instructions
+
 * Prerequisites
 * Generate a new Quarkus project
 * Deploy to AWS Lambda with HTTP API

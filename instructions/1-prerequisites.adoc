@@ -10,14 +10,14 @@ image::../images/dev-sandbox.png[dev-sandbox]
 
 image::../images/aws-signin.png[aws-signin]
 
-* [JDK 11+](https://openjdk.java.net/install/) installed with `JAVA_HOME` configured appropriately
+* https://openjdk.java.net/install[JDK 11+^] installed with `JAVA_HOME` configured appropriately
 
-* [Apache Maven](https://maven.apache.org/download.cgi) 3.8.1+
+* https://maven.apache.org/download.cgi[Apache Maven 3.8.1+^]
 
-* [Knative CLI](https://docs.openshift.com/container-platform/4.10/serverless/cli_tools/installing-kn.html)
+* https://docs.openshift.com/container-platform/4.10/serverless/cli_tools/installing-kn.html[Knative CLI^]
 
-* Optionally the [Quarkus CLI](https://quarkus.io/guides/cli-tooling) if you want to use it
+* Optionally the https://quarkus.io/guides/cli-tooling[Quarkus CLI^] if you want to use it
 
-* Optionally the [HTTPie](https://httpie.io/) if you want to use it
+* Optionally the https://httpie.io[HTTPie^] if you want to use it
 
 ➡️ Next section: link:./2-generate-quarkus-project.adoc[Generate a new Quarkus project]
