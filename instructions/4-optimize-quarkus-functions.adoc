@@ -85,7 +85,7 @@ The output should look like:
     "Description": "",
     "Timeout": 15,
     "MemorySize": 256,
-    "LastModified": "2022-06-17T20:24:20.759+0000",
+    "LastModified": "2022-07-12T08:28:47.550+0000",
     "CodeSha256": "5QiygSRg3ZJacTVI4sFG2IPpqmx70gUinJK+RsbyS3E=",
     "Version": "$LATEST",
     "TracingConfig": {
