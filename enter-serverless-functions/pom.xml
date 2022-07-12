@@ -12,7 +12,11 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+<<<<<<< HEAD
     <quarkus.platform.version>2.10.2.Final</quarkus.platform.version>
+=======
+    <quarkus.platform.version>2.10.0.Final</quarkus.platform.version>
+>>>>>>> 8eeaea48a469e704342fcc847cd762944fd53385
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
   </properties>
@@ -43,11 +47,11 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-openshift</artifactId>
-    </dependency> -->
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-amazon-lambda-http</artifactId>
-    </dependency>
+    </dependency> -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
