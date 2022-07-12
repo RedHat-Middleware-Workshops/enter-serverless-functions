@@ -11,7 +11,7 @@ The output should be:
 
 [source,sh]
 ----
-[SUCCESS] ✅  Extension io.quarkus:quarkus-amazon-lambda-http has been installed
+ 👍  Extension io.quarkus:quarkus-amazon-lambda-http was already installed
 ----
 
 You can also search what kinds of extensions are available to install on the working project:
@@ -141,17 +141,19 @@ To mirror the AWS Lambda environment as closely as possible in a dev environment
 
 While running in *Quarkus Dev Mode*, you can feed events to it by doing an `HTTP POST` to http://localhost:8080. The mock event server will receive the events and your lambda will be invoked. You can perform live coding on your lambda and changes will automatically be recompiled and available the next invocation you make.
 
-Furthermore, if you're still running the *continuous testing*, you can see the following `TEST REPORT` in the terminal because you only changed the business application code (e.g. _hello()_) without the test code. 
+Furthermore, if you're still running (or re-run) the *continuous testing*, you can see the following `TEST REPORT` in the terminal because you only changed the business application code (e.g. _hello()_) without the test code. 
 
-[source,java]
+[source,sh]
 ----
-2022-06-17 10:54:13,019 ERROR [io.qua.test] (Test runner thread) >>>>>>>>>>>>>>>>>>>> 1 TEST FAILED <<<<<<<<<<<<<<<<<<<<
-2022-06-17 10:54:13,407 ERROR [io.qua.test] (Test runner thread) ==================== TEST REPORT #2 ====================
-2022-06-17 10:54:13,407 ERROR [io.qua.test] (Test runner thread) Test GreetingResourceTest#testHelloEndpoint() failed 
+ERROR [io.qua.test] (Test runner thread) ==================== TEST REPORT #1 ====================
+ERROR [io.qua.test] (Test runner thread) Test GreetingResourceTest#testHelloEndpoint() failed 
 : java.lang.AssertionError: 1 expectation failed.
 Response body doesn't match expectation.
 Expected: is "Hello from RESTEasy Reactive"
   Actual: Hello Serverless
+
+	at io.restassured.internal.ValidatableResponseImpl.body(ValidatableResponseImpl.groovy)
+	at org.acme.GreetingResourceTest.testHelloEndpoint(GreetingResourceTest.java:18)
 ----
 
 To fix the test error, update the test case along with the modified __hello__ function. Open the `GreetingResourceTest.java` file in __src/test/java/org/acme__ directory and replace `testHelloEndpoint()` method with the following code:
@@ -223,7 +225,7 @@ Output should look like:
 ----
 Mounting EnterServerlessFunction at http://127.0.0.1:3000$default[X-AMAZON-APIGATEWAY-ANY-METHOD^]
 You can now browse to the above endpoints to invoke your functions. You do not need to restart/reload SAM CLI while working on your functions, changes will be reflected instantly/automatically. You only need to restart SAM CLI if you update your AWS SAM template
-2022-06-17 11:06:17  * Running on http://127.0.0.1:3000/ (Press CTRL+C to quit)
+YYYY-MM-DD HH:MM:SS  * Running on http://127.0.0.1:3000/ (Press CTRL+C to quit)
 ----
 
 Then, invoke the endpoint like in another terminal:
@@ -250,7 +252,7 @@ Then, the output should look like:
 ----
 HTTP/1.0 200 OK
 Content-Type: text/plain;charset=UTF-8
-Date: Fri, 17 Jun 2022 15:07:26 GMT
+Tue, 12 Jul 2022 08:01:55 GMT
 Server: Werkzeug/1.0.1 Python/3.8.13
 content-length: 49
 
@@ -423,11 +425,11 @@ The output should look like:
 [source,sh]
 ----
 HTTP/1.1 200 OK
-Apigw-Requestid: T4dpPhrnoAMEVIw=
+Apigw-Requestid: VJPTOhAWoAMEJJA=
 Connection: keep-alive
 Content-Length: 48
 Content-Type: text/plain;charset=UTF-8
-Date: Fri, 17 Jun 2022 19:57:25 GMT
+Date: Tue, 12 Jul 2022 08:08:57 GMT
 
 Enter Serverless Functions with Quarkus, awsprod
 ----
