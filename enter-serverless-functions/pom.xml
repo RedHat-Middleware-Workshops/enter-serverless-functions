@@ -13,7 +13,7 @@
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
 <<<<<<< HEAD
-    <quarkus.platform.version>2.10.2.Final</quarkus.platform.version>
+    <quarkus.platform.version>2.10.3.Final</quarkus.platform.version>
 =======
     <quarkus.platform.version>2.10.0.Final</quarkus.platform.version>
 >>>>>>> 8eeaea48a469e704342fcc847cd762944fd53385
