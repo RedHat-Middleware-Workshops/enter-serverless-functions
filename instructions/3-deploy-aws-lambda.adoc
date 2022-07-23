@@ -11,7 +11,7 @@ The output should be:
 
 [source,sh]
 ----
- 👍  Extension io.quarkus:quarkus-amazon-lambda-http was already installed
+[SUCCESS] ✅  Extension io.quarkus:quarkus-amazon-lambda-http has been installed
 ----
 
 You can also search what kinds of extensions are available to install on the working project:
