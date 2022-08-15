@@ -2,7 +2,7 @@
 
 Before you get started with the hands-on labs, if you already haven't user accounts in the sandbox and AWS, you might need to sign in two cloud services for function deployments such as OpenShift(Kubernetes) and AWS Lambda as below:
 
-* Sign up the [Developer Sandbox for Red Hat OpenShift](https://developers.redhat.com/developer-sandbox/get-started) to deploy Quarkus serverless functions to Kubernetes/OpenShift cluster. Click on `Launch your Developer Sandbox for Red Hat OpenShift` in the _Get Started in the Sandbox_ page. You will need to create a new user account using your email address then your sandbox will stand up in 5 minutes.
+* Sign up the [Developer Sandbox for Red Hat OpenShift](https://developers.redhat.com/developer-sandbox/get-started) to deploy Quarkus serverless functions to Kubernetes/OpenShift cluster. Click on `Start your sandbox for free` in the _Get Started in the Sandbox_ page. You will need to create a new user account using your email address then your sandbox will stand up in 5 minutes.
 
 image::../images/dev-sandbox.png[dev-sandbox]
 
@@ -14,7 +14,7 @@ image::../images/aws-signin.png[aws-signin]
 
 * https://maven.apache.org/download.cgi[Apache Maven 3.8.1+^]
 
-* https://docs.openshift.com/container-platform/4.10/serverless/cli_tools/installing-kn.html[Knative CLI^]
+* https://docs.openshift.com/container-platform/4.11/serverless/cli_tools/installing-kn.html[Knative CLI^]
 
 * https://quarkus.io/guides/cli-tooling[Quarkus CLI^]
 

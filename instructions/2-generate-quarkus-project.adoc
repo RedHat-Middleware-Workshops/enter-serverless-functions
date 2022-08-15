@@ -51,24 +51,15 @@ The output looks like:
 [source,sh]
 ----
 Listening for transport dt_socket at address: 5005
-
-
-
+WARN  [io.net.res.dns.DnsServerAddressStreamProviders] (build-39) Can not find {} in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS.
 __  ____  __  _____   ___  __ ____  ______ 
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
-<<<<<<< HEAD
-INFO  [io.quarkus] (Quarkus Main Thread) enter-serverless-function 1.0.0-SNAPSHOT on JVM (powered by Quarkus xx.xx.xx.Final) started in 1.754s. Listening on: http://localhost:8080
+INFO  [io.quarkus] (Quarkus Main Thread) enter-serverless-function 1.0.0-SNAPSHOT on JVM (powered by Quarkus xx.xx.xx.Final) started in 1.612s. Listening on: http://localhost:8080
 
 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, resteasy-reactive, smallrye-context-propagation, vertx]
-=======
-2022-06-23 11:52:08,492 INFO  [io.quarkus] (Quarkus Main Thread) enter-serverless-functions 1.0.0-SNAPSHOT on JVM (powered by Quarkus 2.10.0.Final) started in 1.508s. Listening on: http://localhost:8080
-
-2022-06-23 11:52:08,508 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2022-06-23 11:52:08,508 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, resteasy-reactive, smallrye-context-propagation, vertx]
->>>>>>> 8eeaea48a469e704342fcc847cd762944fd53385
 
 --
 Tests paused

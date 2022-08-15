@@ -94,10 +94,10 @@ The output should look like:
 HTTP/1.1 200 OK
 content-length: 52
 content-type: application/json
-date: Tue, 12 Jul 2022 08:43:55 GMT
+date: Mon, 15 Aug 2022 17:53:33 GMT
 server: envoy
-set-cookie: 899f9a06195f6ac12e4ca39365f0ba09=9826912adca8d8052cbd4d6d8c15e468; path=/; HttpOnly
-x-envoy-upstream-service-time: 196
+set-cookie: f301134c73b56fb5a7c418e831b3c2ee=a4a6175a464d76be57ebe4bdabb3decd; path=/; HttpOnly
+x-envoy-upstream-service-time: 23
 
 "Enter Serverless Functions with Quarkus, Daniel Oh"
 ----
