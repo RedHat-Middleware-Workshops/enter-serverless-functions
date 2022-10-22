@@ -20,10 +20,11 @@ Replace `username` with your own account in the developer sandbox.
 
 [source,yaml]
 ----
-quarkus.kubernetes.deploy=true
-quarkus.kubernetes.deployment.target=knative
 quarkus.container-image.group=username-dev
 quarkus.container-image.registry=image-registry.openshift-image-registry.svc:5000
+quarkus.kubernetes-client.trust-certs=true
+quarkus.kubernetes.deploy=true
+quarkus.kubernetes.deployment.target=knative
 ----
 
 [NOTE]
