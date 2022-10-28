@@ -10,7 +10,7 @@ image::../images/dev-sandbox.png[dev-sandbox]
 
 image::../images/aws-signin.png[aws-signin]
 
-* https://openjdk.java.net/install[JDK 11+^] installed with `JAVA_HOME` configured appropriately
+* https://openjdk.java.net/install[JDK 11] installed with `JAVA_HOME` configured appropriately
 
 * https://maven.apache.org/download.cgi[Apache Maven 3.8.1+^]
 
