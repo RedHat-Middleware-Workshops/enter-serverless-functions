@@ -93,7 +93,7 @@ The output should look like:
 HTTP/1.1 200 OK
 content-length: 52
 content-type: application/json
-date: Mon, 15 Aug 2022 17:53:33 GMT
+date: Wed, 2 Nov 2022 17:53:33 GMT
 server: envoy
 set-cookie: f301134c73b56fb5a7c418e831b3c2ee=a4a6175a464d76be57ebe4bdabb3decd; path=/; HttpOnly
 x-envoy-upstream-service-time: 23
