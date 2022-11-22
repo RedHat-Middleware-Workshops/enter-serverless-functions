@@ -2,7 +2,14 @@
 
 [NOTE]
 ====
-Red Hat OpenShift Serverless Function is still a Tech Preview feature. If you haven't installed Knative command (kn) yet, find more information https://docs.openshift.com/container-platform/4.10/serverless/cli_tools/advanced-kn-config.html[here^].
+Red Hat OpenShift Serverless Function is still a Tech Preview feature. If you haven't installed Knative command (kn) yet, find more information https://docs.openshift.com/container-platform/4.11/serverless/cli_tools/advanced-kn-config.html[here^].
+
+In case you want to install *kn* command tool in the Developer Sandbox, run the following *curl* command. It will download the *kn* tool in */tmp* directory.
+
+[source,sh]
+----
+curl -L  -o /tmp/kn https://github.com/knative/client/releases/download/knative-v1.8.1/kn-linux-amd64 ; chmod a+x /tmp/kn; /tmp/kn version
+----
 ====
 
 Run the following command:
