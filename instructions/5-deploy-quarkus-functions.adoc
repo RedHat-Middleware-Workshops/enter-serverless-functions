@@ -101,6 +101,12 @@ x-envoy-upstream-service-time: 23
 "Enter Serverless Functions with Quarkus, Daniel Oh"
 ----
 
+You can also use `curl` command to access the endpoint:
+[source,sh]
+----
+curl -X POST -H "Content-Type: application/json" -d '"Daniel Oh"' https://enter-serverless-function-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com ; echo
+----
+
 When you got back to the Topology view, you will see the Quarkus pod is automatically scaled up in a second:
 
 image::../images/openshift-funq-up.png[openshift-funq-up]
