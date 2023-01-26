@@ -438,7 +438,7 @@ Deploy a native executable to AWS Lambda. Package the application once again usi
 
 [NOTE]
 ====
-When you build a native executable on *macOS*, you need to add the following configuration in _src/main/resources/application.properties_ for building a Linux format image using Docker runtime
+When you build a native executable on *macOS* or *Windows*, you need to add the following configuration in _src/main/resources/application.properties_ for building a Linux format image using Docker runtime
 ====
 
 [source,yaml]
