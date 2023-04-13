@@ -39,6 +39,11 @@ cd quarkus-func
 kn func deploy -r YOUR_CONTAINER_REGISTRY -n YOUR_USERNAME-dev -v
 ----
 
+[NOTE]
+====
+In case you want to build the image on macOS M1/M2, you need to append *--platform linux/x86_64* to the command line.
+====
+
 Kn func uses https://buildpacks.io[Buildpack^] tool to build a function and deploy it to Kubernetes or OpenShift. Once the build is completed, you will see the output like:
 
 [source,sh]
