@@ -1,27 +1,35 @@
-version: 0.0.0
+specVersion: 0.34.0
 name: quarkus-func
-namespace: ""
 runtime: quarkus
-registry: ""
-image: ""
+registry: quay.io/danieloh30
+image: quay.io/danieloh30/quarkus-func:latest
 imageDigest: ""
-build: local
-git: {}
-builder: quay.io/boson/faas-jvm-builder:v0.9.2
-builders:
-  default: quay.io/boson/faas-jvm-builder:v0.9.2
-  jvm: quay.io/boson/faas-jvm-builder:v0.9.2
-  native: quay.io/boson/faas-quarkus-native-builder:v0.9.2
-buildpacks: []
-volumes: []
-buildEnvs: []
-envs: []
-annotations: {}
-options: {}
-labels: []
-healthEndpoints:
-  liveness: /health/liveness
-  readiness: /health/readiness
-created: 2022-06-17T16:49:06.466024-04:00
+created: 2023-04-13T09:30:38.778005+02:00
 invocation:
   format: cloudevent
+build:
+  buildpacks: []
+  builder: s2i
+  buildEnvs:
+  - name: BP_NATIVE_IMAGE
+    value: "false"
+  - name: BP_MAVEN_BUILT_ARTIFACT
+    value: func.yaml target/quarkus-app/lib/ target/quarkus-app/*.jar target/quarkus-app/app/
+      target/quarkus-app/quarkus/
+  - name: BP_MAVEN_BUILD_ARGUMENTS
+    value: package -DskipTests=true -Dmaven.javadoc.skip=true -Dquarkus.package.type=fast-jar
+  - name: MAVEN_S2I_ARTIFACT_DIRS
+    value: target/quarkus-app
+  - name: S2I_SOURCE_DEPLOYMENTS_FILTER
+    value: lib quarkus-run.jar app quarkus
+run:
+  volumes: []
+  envs: []
+deploy:
+  namespace: doh-dev
+  annotations: {}
+  options: {}
+  labels: []
+  healthEndpoints:
+    liveness: /health/liveness
+    readiness: /health/readiness
