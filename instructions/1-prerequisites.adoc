@@ -14,7 +14,7 @@ image::../images/aws-signin.png[aws-signin]
 
 * https://maven.apache.org/download.cgi[Apache Maven 3.8.1+^]
 
-* https://docs.openshift.com/container-platform/4.11/serverless/cli_tools/installing-kn.html[Knative CLI^]
+* https://docs.openshift.com/container-platform/latest/serverless/install/installing-kn.html[Knative CLI^]
 
 * https://quarkus.io/guides/cli-tooling[Quarkus CLI^]
 
