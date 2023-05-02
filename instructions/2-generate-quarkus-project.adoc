@@ -87,7 +87,7 @@ Verify the RESTful API if it works well. For example, use https://httpie.io[HTTP
 http :8080/hello
 ----
 
-The output should be:
+The output should be: 
 
 [source,sh]
 ----
