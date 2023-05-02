@@ -10,9 +10,9 @@ image::../images/dev-sandbox.png[dev-sandbox]
 
 image::../images/aws-signin.png[aws-signin]
 
-* https://openjdk.java.net/install[JDK 11] installed with `JAVA_HOME` configured appropriately
+* https://developers.redhat.com/products/openjdk/download[JDK 17] installed with `JAVA_HOME` configured appropriately
 
-* https://maven.apache.org/download.cgi[Apache Maven 3.8.1+^]
+* https://maven.apache.org/download.cgi[Apache Maven 3.9.1^]
 
 * https://docs.openshift.com/container-platform/latest/serverless/install/installing-kn.html[Knative CLI^]
 
