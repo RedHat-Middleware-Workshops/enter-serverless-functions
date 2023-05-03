@@ -12,7 +12,7 @@ The Quarkus native compilation allows you to have high resource density as almos
 
 image::../images/quarkus-container-first.png[quarkus-container-first]
 
-Quarkus funqy also provides the other extensions for you to deploy the serverless functions to` Azure Function` and `Google Cloud Platform`.
+Quarkus funqy also provides the other extensions for you to deploy the serverless functions to `Azure Function` and `Google Cloud Platform`.
 
 image::../images/quarkus-funqy.png[quarkus-funqy]
 
