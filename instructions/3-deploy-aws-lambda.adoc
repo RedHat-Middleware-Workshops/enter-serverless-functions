@@ -223,7 +223,7 @@ Open the `sam.jvm.yaml` file in the *target* directory. Then, update the `Runtim
 Runtime: java17
 ----
 
-Run the following SAM command:
+Save the file. Then, run the following SAM command:
 
 [source,sh]
 ----
