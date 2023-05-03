@@ -55,7 +55,7 @@ Create a new `GreetingService.java` file in _src/main/java/org/acme/_. Then copy
 ----
 package org.acme;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class GreetingService {
@@ -73,9 +73,9 @@ Update `GreetingResource.java` file in _src/main/java/org/acme/_ to inject a CDI
 ----
 package org.acme;
 
-import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("/hello")
 public class GreetingResource {
@@ -135,6 +135,8 @@ Enter Serverless Functions with Quarkus, daniel
 [NOTE]
 ====
 You don’t need to stop and re-run the serverless application because Quarkus will reload the changes automatically via the `Live Coding` feature.
+
+In case you're stuck when you invoke the REST APIs, make sure to close the Dev UI and restart the Quarkus dev mode.
 ====
 
 To mirror the AWS Lambda environment as closely as possible in a dev environment, the Quarkus Amazon Lambda extension boots up a mock AWS Lambda event server in Quarkus Dev and Test mode. This mock event server simulates a true AWS Lambda environment.
@@ -214,6 +216,15 @@ To simulate the function locally using https://docs.aws.amazon.com/serverless-ap
 You need to run a container runtime(e.g. https://www.docker.com/products/docker-desktop[Docker^]) to run the SAM emulator.
 ====
 
+Open the `sam.jvm.yaml` file in the *target* directory. Then, update the `Runtime` to use Java 17. Currently, Quarkus doesn't generate the Java17 runtime by default.
+
+[source,sh]
+----
+Runtime: java17
+----
+
+Run the following SAM command:
+
 [source,sh]
 ----
 sam local start-api -t target/sam.jvm.yaml
@@ -223,9 +234,11 @@ Output should look like:
 
 [source,sh]
 ----
-Mounting EnterServerlessFunction at http://127.0.0.1:3000$default[X-AMAZON-APIGATEWAY-ANY-METHOD^]
-You can now browse to the above endpoints to invoke your functions. You do not need to restart/reload SAM CLI while working on your functions, changes will be reflected instantly/automatically. You only need to restart SAM CLI if you update your AWS SAM template
-YYYY-MM-DD HH:MM:SS  * Running on http://127.0.0.1:3000/ (Press CTRL+C to quit)
+Mounting EnterServerlessFunction at http://127.0.0.1:3000$default [X-AMAZON-APIGATEWAY-ANY-METHOD]
+You can now browse to the above endpoints to invoke your functions. You do not need to restart/reload SAM CLI while working on your functions, changes will be reflected instantly/automatically. If you used sam build before running local commands, you will need to re-run sam build for the changes to be picked up. You only need to restart SAM CLI if you update your AWS SAM template
+YYYY-MM-SS HH:MM:SS WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:3000
+YYYY-MM-SS HH:MM:SS Press CTRL+C to quit
 ----
 
 Then, invoke the endpoint like in another terminal:
@@ -425,11 +438,11 @@ The output should look like:
 [source,sh]
 ----
 HTTP/1.1 200 OK
-Apigw-Requestid: VJPTOhAWoAMEJJA=
+Apigw-Requestid: EUxSijdzoAMEJ4w=
 Connection: keep-alive
 Content-Length: 48
 Content-Type: text/plain;charset=UTF-8
-Date: Wed, 2 Nov 2022 08:08:57 GMT
+Date: Wed, 03 May 2023 02:37:20 GMT
 
 Enter Serverless Functions with Quarkus, awsprod
 ----
