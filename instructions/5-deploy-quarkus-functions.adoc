@@ -61,7 +61,7 @@ The output will end with `BUILD SUCCESS`. You can overwrite the pod label to sho
 
 [source,sh]
 ----
-oc label rev/enter-serverless-functions-00001 app.openshift.io/runtime=quarkus --overwrite
+oc label rev/enter-serverless-function-00001 app.openshift.io/runtime=quarkus --overwrite
 ----
 
 If you deployed the function multiple times, the revision number (e.g. _00001_) should be different.
@@ -70,7 +70,7 @@ Add the **function** icon to the Knative service by running the following oc com
 
 [source,sh]
 ----
-oc label ksvc/enter-serverless-functions boson.dev/function=true --overwrite
+oc label ksvc/enter-serverless-function boson.dev/function=true --overwrite
 ----
 
 Go to the `Topology` view in _OpenShift Developer console_:
