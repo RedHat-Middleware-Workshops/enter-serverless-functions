@@ -1,16 +1,17 @@
-specVersion: 0.34.0
+specVersion: 0.35.0
 name: quarkus-func
 runtime: quarkus
 registry: quay.io/danieloh30
-image: quay.io/danieloh30/quarkus-func:latest
+image: ""
 imageDigest: ""
-created: 2023-04-13T09:30:38.778005+02:00
-invocation:
-  format: cloudevent
+created: 2023-05-02T23:21:26.219979-04:00
+invoke: cloudevent
 build:
   buildpacks: []
   builder: s2i
   buildEnvs:
+  - name: BP_JVM_VERSION
+    value: "17"
   - name: BP_NATIVE_IMAGE
     value: "false"
   - name: BP_MAVEN_BUILT_ARTIFACT
@@ -27,6 +28,7 @@ run:
   envs: []
 deploy:
   namespace: doh-dev
+  remote: false
   annotations: {}
   options: {}
   labels: []
