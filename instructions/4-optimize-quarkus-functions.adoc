@@ -64,6 +64,15 @@ Open and inspect `manage.sh` file in the _target_ directory.
 
 You don't need to use the _SAM CLI_ directly since *manage.sh* script is a wrapper to create and delete a function simply.
 
+Let's update the *RUNTIME* in the `target/manage.sh` file to use Java 17 again.
+
+[source,sh]
+----
+RUNTIME=java17
+----
+
+Save the file. 
+
 Run the script file with _LAMBDA_ROLE_ARN_ resource. If you have no IAM roles, you need to create a new one in the AWS console. Find more information https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html[here^].
 
 [source,sh]
@@ -78,20 +87,20 @@ The output should look like:
 {
     "FunctionName": "EnterServerlessFunction",
     "FunctionArn": "arn:aws:lambda:us-east-1:716861016243:function:EnterServerlessFunction",
-    "Runtime": "java11",
+    "Runtime": "java17",
     "Role": "arn:aws:iam::716861016243:role/lambda-role",
     "Handler": "io.quarkus.funqy.lambda.FunqyStreamHandler::handleRequest",
-    "CodeSize": 14132884,
+    "CodeSize": 15614407,
     "Description": "",
     "Timeout": 15,
     "MemorySize": 256,
-    "LastModified": "2022-07-12T08:28:47.550+0000",
-    "CodeSha256": "5QiygSRg3ZJacTVI4sFG2IPpqmx70gUinJK+RsbyS3E=",
+    "LastModified": "2023-05-03T02:59:36.252+0000",
+    "CodeSha256": "4F2ZIQVC5x4c5AMius5hM+815ZSLB1AyzfideNpNxLk=",
     "Version": "$LATEST",
     "TracingConfig": {
         "Mode": "PassThrough"
     },
-    "RevisionId": "61663da8-947f-460b-b94e-82365b19ab63",
+    "RevisionId": "19f56627-6307-467f-a621-f01cd8d4a4b8",
     "State": "Pending",
     "StateReason": "The function is being created.",
     "StateReasonCode": "Creating",
@@ -101,6 +110,10 @@ The output should look like:
     ],
     "EphemeralStorage": {
         "Size": 512
+    },
+    "SnapStart": {
+        "ApplyOn": "None",
+        "OptimizationStatus": "Off"
     }
 }
 ----
