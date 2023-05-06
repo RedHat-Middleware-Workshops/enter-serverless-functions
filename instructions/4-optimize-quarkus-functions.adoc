@@ -15,7 +15,7 @@ Update the `GreetingResource.java` file to use `@funq` annotation. Then, remove 
 ----
 package org.acme;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import io.quarkus.funqy.Funq;
 
 public class GreetingResource {
